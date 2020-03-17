@@ -16,19 +16,15 @@ jobs:
         run: go build -v
       - name: Test code
         run: go test -v -count 3
-      - name: Setup SSH key
+      - name: Setup SSH
         if: github.event.ref == 'refs/heads/master'
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{secrets.SSH_PRIVATE_KEY}}
           known_hosts: ${{secrets.SSH_KNOWN_HOST}}
-      - name: Copy SSH key
-        if: github.event.ref == 'refs/heads/master'
-        run: cp ~/.ssh/id_rsa .
       - name: Deploy
         if: github.event.ref == 'refs/heads/master'
         uses: saubermacherag/ansible-playbook-docker-action@v1.3
         with:
           playbookName: deploy.yml
-          keyFile: id_rsa
           extraVars: -i ${{secrets.SERVER_USER}}@${{secrets.SERVER_IP}},

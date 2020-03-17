@@ -6,3 +6,4 @@
       copy:
         src: server
         dest: /usr/local/bin/server
+        mode: '0755'

@@ -1,0 +1,8 @@
+- name: Deploy
+  hosts: all
+  tasks:
+    - name: Copy server binary
+      become: yes
+      copy:
+        src: server
+        dest: /usr/local/bin/server

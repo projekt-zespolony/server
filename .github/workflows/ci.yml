@@ -16,3 +16,13 @@ jobs:
         run: go build -v
       - name: Test
         run: go test -v -count 3
+      - name: Key
+        if: github.event.ref == 'refs/heads/master'
+        run: echo ${{secrets.SSH_PRIVATE_KEY}} > ssh_key.pem
+      - name: Deploy
+        if: github.event.ref == 'refs/heads/master'
+        uses: saubermacherag/ansible-playbook-docker-action@v1.3
+        with:
+          playbookName: deploy.yml
+          keyFile: ssh_key.pem
+          extraVars: -i ${{secrets.SERVER_USER}}@${{secrets.SERVER_IP}},

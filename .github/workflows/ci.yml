@@ -18,13 +18,11 @@ jobs:
         run: go test -v -count 3
       - name: Setup SSH
         if: github.event.ref == 'refs/heads/master'
-        uses: shimataro/ssh-key-action@v2
-        with:
-          key: ${{secrets.SSH_PRIVATE_KEY}}
-          known_hosts: ${{secrets.SSH_KNOWN_HOST}}
+        run: echo "${{secrets.SSH_PRIVATE_KEY}}" > key.pem
       - name: Deploy
         if: github.event.ref == 'refs/heads/master'
         uses: saubermacherag/ansible-playbook-docker-action@v1.3
         with:
           playbookName: deploy.yml
+          keyFile: key.pem
           extraVars: -i ${{secrets.SERVER_USER}}@${{secrets.SERVER_IP}},

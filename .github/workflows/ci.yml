@@ -16,8 +16,11 @@ jobs:
         run: go build -v
       - name: Test code
         run: go test -v -count 3
-      - name: Build image
-        run: docker build -t server .
+      - name: Publish image
+        uses: matootie/github-docker@v2.2.2
+        with:
+          accessToken: ${{secrets.GITHUB_TOKEN}}
+          imageTag: latest
       - name: Setup key
         if: github.event.ref == 'refs/heads/master'
         run: echo "${{secrets.SSH_PRIVATE_KEY}}" > key.pem

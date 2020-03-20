@@ -1,19 +1,28 @@
-- name: Deploy
+- name: Deploy stack
   hosts: all
+  become: yes
   tasks:
     - name: Install Docker
-      become: yes
       apt:
         name: docker.io
     - name: Start Docker
-      become: yes
       systemd:
         name: docker
         enabled: yes
         state: started
-    - name: Copy server binary
-      become: yes
-      copy:
-        src: server
-        dest: /usr/local/bin/server
-        mode: '0755'
+    - name: Start MySQL container
+      docker_container:
+        name: db
+        image: mysql:8
+        cleanup: yes
+        restart_policy: on-failure
+    - name: Start server container
+      docker_container:
+        name: server
+        image: docker.pkg.github.com/projekt-zespolony/server/server:latest
+        cleanup: yes
+        recreate: yes
+        pull: yes
+        restart_policy: on-failure
+        links:
+          - db

@@ -20,7 +20,7 @@ jobs:
         if: github.event.ref == 'refs/heads/master'
         uses: matootie/github-docker@v2.2.2
         with:
-          accessToken: ${{secrets.GITHUB_TOKEN}}
+          accessToken: ${{github.token}}
           imageTag: latest
       - name: Setup key
         if: github.event.ref == 'refs/heads/master'
@@ -31,4 +31,4 @@ jobs:
         with:
           playbookName: deploy.yml
           keyFile: key.pem
-          extraVars: -i ${{secrets.SERVER_USER}}@${{secrets.SERVER_IP}},
+          extraVars: -i ${{secrets.SERVER_USER}}@${{secrets.SERVER_IP}}, -e docker_username=${{github.actor}} -e docker_password=${{github.token}}

@@ -1,6 +1,16 @@
 - name: Deploy
   hosts: all
   tasks:
+    - name: Install Docker
+      become: yes
+      apt:
+        name: docker.io
+    - name: Start Docker
+      become: yes
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
     - name: Copy server binary
       become: yes
       copy:

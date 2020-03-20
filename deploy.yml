@@ -12,6 +12,11 @@
         name: docker
         enabled: yes
         state: started
+    - name: Login to Docker GH registry
+      docker_login:
+        registry_url: docker.pkg.github.com
+        username: "{{ docker_username }}"
+        password: "{{ docker_password }}"
     - name: Start MySQL container
       docker_container:
         name: db

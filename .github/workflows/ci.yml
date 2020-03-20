@@ -16,10 +16,12 @@ jobs:
         run: go build -v
       - name: Test code
         run: go test -v -count 3
-      - name: Setup SSH
+      - name: Build image
+        run: docker build -t server .
+      - name: Setup key
         if: github.event.ref == 'refs/heads/master'
         run: echo "${{secrets.SSH_PRIVATE_KEY}}" > key.pem
-      - name: Deploy
+      - name: Run playbook
         if: github.event.ref == 'refs/heads/master'
         uses: saubermacherag/ansible-playbook-docker-action@v1.3
         with:

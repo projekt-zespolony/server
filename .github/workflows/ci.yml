@@ -17,6 +17,7 @@ jobs:
       - name: Test code
         run: go test -v -count 3
       - name: Publish image
+        if: github.event.ref == 'refs/heads/master'
         uses: matootie/github-docker@v2.2.2
         with:
           accessToken: ${{secrets.GITHUB_TOKEN}}

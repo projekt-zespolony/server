@@ -37,3 +37,8 @@
           - 80:80
         links:
           - db
+    - name: Prune Docker leftovers
+      docker_prune:
+        images: yes
+        containers: yes
+

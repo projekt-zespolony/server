@@ -23,6 +23,8 @@
         image: mysql:8
         cleanup: yes
         restart_policy: on-failure
+        env:
+          MYSQL_RANDOM_ROOT_PASSWORD: yes
     - name: Start server container
       docker_container:
         name: server
@@ -31,5 +33,7 @@
         recreate: yes
         pull: yes
         restart_policy: on-failure
+        ports:
+          - 80:80
         links:
           - db

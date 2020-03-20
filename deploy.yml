@@ -24,7 +24,7 @@
         cleanup: yes
         restart_policy: on-failure
         env:
-          MYSQL_RANDOM_ROOT_PASSWORD: yes
+          MYSQL_RANDOM_ROOT_PASSWORD: "yes"
     - name: Start server container
       docker_container:
         name: server

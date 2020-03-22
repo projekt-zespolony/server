@@ -32,7 +32,7 @@ func handleGetSensors(writer http.ResponseWriter, request *http.Request) {
 }
 
 func handlePostSensors(writer http.ResponseWriter, request *http.Request) {
-	if request.Header.Get("token") != "example" {
+	if !isAuthorized(request) {
 		writer.WriteHeader(http.StatusUnauthorized)
 		return
 	}

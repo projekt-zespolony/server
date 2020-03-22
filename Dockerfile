@@ -6,5 +6,5 @@ RUN go build
 
 FROM scratch
 COPY --from=builder /app/server /server
-EXPOSE 80
+EXPOSE 8080
 ENTRYPOINT ["/server"]

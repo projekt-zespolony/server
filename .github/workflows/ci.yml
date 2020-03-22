@@ -16,19 +16,3 @@ jobs:
         run: go build -v
       - name: Test code
         run: go test -v -count 3
-      - name: Publish image
-        if: github.event.ref == 'refs/heads/master'
-        uses: matootie/github-docker@v2.2.2
-        with:
-          accessToken: ${{github.token}}
-          imageTag: latest
-      - name: Setup key
-        if: github.event.ref == 'refs/heads/master'
-        run: echo "${{secrets.SSH_PRIVATE_KEY}}" > key.pem
-      - name: Run playbook
-        if: github.event.ref == 'refs/heads/master'
-        uses: saubermacherag/ansible-playbook-docker-action@v1.3
-        with:
-          playbookName: deploy.yml
-          keyFile: key.pem
-          extraVars: -i ${{secrets.SERVER_USER}}@${{secrets.SERVER_IP}}, -e docker_username=${{github.actor}} -e docker_password=${{github.token}}

@@ -1,0 +1,28 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Publish image
+        uses: matootie/github-docker@v2.2.2
+        with:
+          accessToken: ${{github.token}}
+          imageTag: latest
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v1
+        with:
+          playbook: deploy.yml
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          options: |
+            -i ${{secrets.SERVER_IP}},
+            -u ${{secrets.SERVER_USER}}
+            -e docker_username=${{github.actor}}
+            -e docker_password=${{github.token}}

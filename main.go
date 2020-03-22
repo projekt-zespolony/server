@@ -9,7 +9,7 @@ import (
 func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/sensors", handleGetSensors).Methods(http.MethodGet)
-	router.HandleFunc("/sensors", handlePostSensors).Methods(http.MethodPost)
+	router.Handle("/sensors", NeedsAuth(handlePostSensors)).Methods(http.MethodPost)
 	server := http.Server{
 		Addr:      "0.0.0.0:8080",
 		Handler:   router,

@@ -32,11 +32,6 @@ func handleGetSensors(writer http.ResponseWriter, request *http.Request) {
 }
 
 func handlePostSensors(writer http.ResponseWriter, request *http.Request) {
-	if !isAuthorized(request) {
-		writer.WriteHeader(http.StatusUnauthorized)
-		return
-	}
-
 	body, err := ioutil.ReadAll(request.Body)
 	if err != nil {
 		writer.WriteHeader(http.StatusInternalServerError)

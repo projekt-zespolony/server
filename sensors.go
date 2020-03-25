@@ -1,8 +1,7 @@
 package main
 
 import (
-	"encoding/json"
-	"io/ioutil"
+	"github.com/labstack/echo/v4"
 	"net/http"
 	"time"
 )
@@ -19,38 +18,15 @@ var currentSensors = &Sensors{
 	Humidity:    0,
 }
 
-func handleGetSensors(writer http.ResponseWriter, request *http.Request) {
-	body, err := json.MarshalIndent(currentSensors, "", "  ")
-	if err != nil {
-		writer.WriteHeader(http.StatusInternalServerError)
-		return
-	}
-
-	writer.WriteHeader(http.StatusOK)
-	writer.Header().Set("Content-Type", "application/json")
-	writer.Write(body)
+func handleGetSensors(c echo.Context) error {
+	return c.JSON(http.StatusOK, currentSensors)
 }
 
-func handlePostSensors(writer http.ResponseWriter, request *http.Request) {
-	body, err := ioutil.ReadAll(request.Body)
+func handlePostSensors(c echo.Context) error {
+	err := c.Bind(currentSensors)
 	if err != nil {
-		writer.WriteHeader(http.StatusInternalServerError)
-		return
+		return err
 	}
 
-	err = json.Unmarshal(body, currentSensors)
-	if err != nil {
-		writer.WriteHeader(http.StatusInternalServerError)
-		return
-	}
-
-	body, err = json.MarshalIndent(currentSensors, "", "  ")
-	if err != nil {
-		writer.WriteHeader(http.StatusInternalServerError)
-		return
-	}
-
-	writer.WriteHeader(http.StatusCreated)
-	writer.Header().Set("Content-Type", "application/json")
-	writer.Write(body)
+	return c.JSON(http.StatusOK, currentSensors)
 }

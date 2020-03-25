@@ -1,27 +1,14 @@
 package main
 
 import (
-	"net/http"
+	"github.com/labstack/echo/v4"
 )
 
-var token = "@@TOKEN@@"
+var token = "TOKEN"
 
-type Auth struct {
-	http.Handler
-	handlerFunc http.HandlerFunc
-}
-
-func (auth *Auth) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
-	if request.Header.Get("token") != token {
-		writer.WriteHeader(http.StatusUnauthorized)
-		return
+func handleAuth(key string, c echo.Context) (bool, error) {
+	if key == token {
+		return true, nil
 	}
-
-	auth.handlerFunc(writer, request)
-}
-
-func NeedsAuth(handlerFunc http.HandlerFunc) http.Handler {
-	return &Auth{
-		handlerFunc: handlerFunc,
-	}
+	return false, nil
 }

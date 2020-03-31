@@ -6,3 +6,4 @@ plugins:
   - search
 markdown_extensions:
   - codehilite
+  - admonition

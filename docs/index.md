@@ -8,3 +8,6 @@ name: aaa
   options:
     - ccc
 ```
+
+!!! note
+    yep

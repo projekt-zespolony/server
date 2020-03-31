@@ -1,0 +1,6 @@
+site_name: Dokumentacja serwera
+repo_url: https://github.com/projekt-zespolony/server
+theme:
+  name: material
+plugins:
+  - search

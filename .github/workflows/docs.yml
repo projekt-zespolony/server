@@ -12,8 +12,10 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v2
+      - name: Unshallow repo
+        run: git fetch --prune --unshallow
       - name: Setup Python
         uses: actions/setup-python@v1
         with:
@@ -21,4 +23,4 @@ jobs:
       - name: Install mkdocs
         run: pip install mkdocs mkdocs-material
       - name: Deploy docs
-        run: mkdocs gh-deploy --verbose
+        run: mkdocs gh-deploy

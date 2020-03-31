@@ -21,6 +21,6 @@ jobs:
         with:
           python-version: 3.x
       - name: Install mkdocs
-        run: pip install mkdocs mkdocs-material
+        run: pip install mkdocs mkdocs-material pygments
       - name: Deploy docs
         run: mkdocs gh-deploy

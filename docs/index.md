@@ -3,7 +3,7 @@
 ## Test
 
 ```yaml
-name: aaa
+name:
   type: bbb
   options:
     - ccc

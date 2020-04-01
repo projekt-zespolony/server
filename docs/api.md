@@ -1,6 +1,6 @@
 # API
 
-## GET /sensors
+### GET /sensors
 
 Przykład:
 
@@ -15,13 +15,17 @@ Odpowiedź:
     // epoka uniksowa (sekundy)
     "timestamp": 123456789,
     // temperatura (stopnie celsjusza)
-    "temperature": 20.5,
+    "temperature": 20.50,
+    // ciśnienie (hPa)
+    "pressure": 1012.22,
     // wilgotność (procent)
-    "humidity": 50
+    "humidity": 50.05,
+    // czad (?)
+    "gas": 100.88
 }
 ```
 
-## POST /sensors
+### POST /sensors
 
 !!! note
     Wymaga autentykacji tokenem.
@@ -39,8 +43,12 @@ curl localhost:8080/sensors -X POST -d '{"temperature":11}' --header 'authorizat
     // epoka uniksowa (sekundy)
     "timestamp": 123456789,
     // temperatura (stopnie celsjusza)
-    "temperature": 20.5,
+    "temperature": 20.50,
+    // ciśnienie (hPa)
+    "pressure": 1012.22,
     // wilgotność (procent)
-    "humidity": 50
+    "humidity": 50.05,
+    // czad (?)
+    "gas": 100.88
 }
 ```

@@ -9,13 +9,13 @@ import (
 type Sensors struct {
 	Timestamp   int64   `json:"timestamp"`
 	Temperature float32 `json:"temperature"`
-	Humidity    int32   `json:"humidity"`
+    Pressure    float32 `json:"pressure"`
+	Humidity    float32 `json:"humidity"`
+    Gas         float32 `json:"gas"`
 }
 
 var currentSensors = &Sensors{
 	Timestamp:   time.Now().Unix(),
-	Temperature: 0,
-	Humidity:    0,
 }
 
 func handleGetSensors(c echo.Context) error {

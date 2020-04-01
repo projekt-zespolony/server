@@ -331,7 +331,7 @@
                 
                 
                 <h1 id="api">API</h1>
-<h2 id="get-sensors">GET /sensors</h2>
+<h3 id="get-sensors">GET /sensors</h3>
 <p>Przykład:</p>
 <div class="codehilite"><pre><span></span><code>curl localhost:8080/sensors
 </code></pre></div>
@@ -342,14 +342,18 @@
     <span class="err">//</span> <span class="err">epoka</span> <span class="err">uniksowa</span> <span class="err">(sekundy)</span>
     <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">123456789</span><span class="p">,</span>
     <span class="err">//</span> <span class="err">temperatura</span> <span class="err">(stopnie</span> <span class="err">celsjusza)</span>
-    <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">20.5</span><span class="p">,</span>
+    <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">20.50</span><span class="p">,</span>
+    <span class="err">//</span> <span class="err">ciśnienie</span> <span class="err">(hPa)</span>
+    <span class="nt">&quot;pressure&quot;</span><span class="p">:</span> <span class="mf">1012.22</span><span class="p">,</span>
     <span class="err">//</span> <span class="err">wilgotność</span> <span class="err">(procent)</span>
-    <span class="nt">&quot;humidity&quot;</span><span class="p">:</span> <span class="mi">50</span>
+    <span class="nt">&quot;humidity&quot;</span><span class="p">:</span> <span class="mf">50.05</span><span class="p">,</span>
+    <span class="err">//</span> <span class="err">czad</span> <span class="err">(?)</span>
+    <span class="nt">&quot;gas&quot;</span><span class="p">:</span> <span class="mf">100.88</span>
 <span class="p">}</span>
 </code></pre></div>
 
 
-<h2 id="post-sensors">POST /sensors</h2>
+<h3 id="post-sensors">POST /sensors</h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Wymaga autentykacji tokenem.</p>
@@ -364,9 +368,13 @@
     <span class="err">//</span> <span class="err">epoka</span> <span class="err">uniksowa</span> <span class="err">(sekundy)</span>
     <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">123456789</span><span class="p">,</span>
     <span class="err">//</span> <span class="err">temperatura</span> <span class="err">(stopnie</span> <span class="err">celsjusza)</span>
-    <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">20.5</span><span class="p">,</span>
+    <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">20.50</span><span class="p">,</span>
+    <span class="err">//</span> <span class="err">ciśnienie</span> <span class="err">(hPa)</span>
+    <span class="nt">&quot;pressure&quot;</span><span class="p">:</span> <span class="mf">1012.22</span><span class="p">,</span>
     <span class="err">//</span> <span class="err">wilgotność</span> <span class="err">(procent)</span>
-    <span class="nt">&quot;humidity&quot;</span><span class="p">:</span> <span class="mi">50</span>
+    <span class="nt">&quot;humidity&quot;</span><span class="p">:</span> <span class="mf">50.05</span><span class="p">,</span>
+    <span class="err">//</span> <span class="err">czad</span> <span class="err">(?)</span>
+    <span class="nt">&quot;gas&quot;</span><span class="p">:</span> <span class="mf">100.88</span>
 <span class="p">}</span>
 </code></pre></div>
                 

@@ -19,6 +19,7 @@ var (
 
 func main() {
 	e := echo.New()
+	e.Debug = true
 	e.Pre(middleware.RemoveTrailingSlash())
 	e.GET("/sensors", handleGetSensors)
 	e.POST("/sensors", handlePostSensors, middleware.KeyAuth(handleAuth))

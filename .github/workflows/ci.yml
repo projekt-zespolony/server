@@ -5,7 +5,7 @@ on:
     paths:
       - '**.go'
       - 'go.*'
-      - 'Dockerfile'
+      - '.github/workflows/*'
 
 jobs:
   ci:

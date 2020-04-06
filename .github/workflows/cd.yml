@@ -9,6 +9,7 @@ on:
       - 'go.*'
       - 'Dockerfile'
       - 'deploy.yml'
+      - '.github/workflows/*'
 
 jobs:
   cd:

@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"os"
 	"time"
 
 	"github.com/labstack/echo/v4"
@@ -9,7 +10,7 @@ import (
 )
 
 var (
-	token = "@@TOKEN@@"
+	token = os.Getenv("TOKEN")
 
 	currentSensors = &Sensors{
 		Timestamp: time.Now().Unix(),

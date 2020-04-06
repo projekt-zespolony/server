@@ -23,7 +23,7 @@ jobs:
           accessToken: ${{github.token}}
           imageTag: latest
       - name: Run playbook
-        uses: dawidd6/action-ansible-playbook@v1
+        uses: dawidd6/action-ansible-playbook@master
         with:
           playbook: deploy.yml
           key: ${{secrets.SSH_PRIVATE_KEY}}

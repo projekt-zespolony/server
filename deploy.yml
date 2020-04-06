@@ -1,8 +1,6 @@
 - name: Deploy stack
   hosts: all
   become: yes
-  vars:
-    google_application_credentials: "{{ ansible_env.HOME }}/.firebase.json"
   tasks:
     - name: Install Docker
       apt:
@@ -14,10 +12,6 @@
         name: docker
         enabled: yes
         state: started
-    - name: Copy Firebase credentials
-      copy:
-        content: "{{ firebase_config }}"
-        dest: "{{ google_application_credentials }}"
     - name: Login to Docker GH registry
       docker_login:
         registry_url: docker.pkg.github.com
@@ -44,10 +38,10 @@
         pull: yes
         restart_policy: on-failure
         env:
-          GOOGLE_APPLICATION_CREDENTIALS: /firebase.json
+          GOOGLE_APPLICATION_CREDENTIALS: "/firebase.json"
           TOKEN: "{{ token }}"
         volumes:
-          - "{{ google_application_credentials }}:/firebase.json:ro"
+          - "/home/ubuntu/.firebase.json:/firebase.json:ro"
         ports:
           - 80:8080
         links:

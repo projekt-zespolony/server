@@ -43,6 +43,7 @@
         restart_policy: on-failure
         env:
           GOOGLE_APPLICATION_CREDENTIALS: "{{ google_application_credentials }}"
+          TOKEN: "{{ token }}"
         ports:
           - 80:8080
         links:

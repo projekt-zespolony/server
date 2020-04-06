@@ -4,7 +4,7 @@ WORKDIR /app
 COPY . /app
 RUN go build
 
-FROM scratch
+FROM alpine:3
 COPY --from=builder /app/server /server
 EXPOSE 8080
 ENTRYPOINT ["/server"]

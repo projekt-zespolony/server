@@ -27,7 +27,7 @@ jobs:
         with:
           playbook: deploy.yml
           key: ${{secrets.SSH_PRIVATE_KEY}}
-          options: |
+          options: >
             -i "${{secrets.SERVER_IP}},"
             -u "${{secrets.SERVER_USER}}"
             -e docker_username="${{github.actor}}"

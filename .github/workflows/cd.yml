@@ -11,7 +11,6 @@ on:
       - 'deploy.yml'
       - '.github/workflows/*'
 
-
 jobs:
   cd:
     runs-on: ubuntu-latest
@@ -29,10 +28,10 @@ jobs:
           playbook: deploy.yml
           key: ${{secrets.SSH_PRIVATE_KEY}}
           options: >
-            -i "${{secrets.SERVER_IP}},"
-            -u "${{secrets.SERVER_USER}}"
-            -e docker_username="${{github.actor}}"
-            -e docker_password="${{github.token}}"
-            -e firebase_config="${{secrets.FIREBASE_CONFIG}}"
-            -e google_application_credentials="${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}"
-            -e token="${{secrets.TOKEN}}"
+            -i '${{secrets.SERVER_IP}},'
+            -u '${{secrets.SERVER_USER}}'
+            -e docker_username='${{github.actor}}'
+            -e docker_password='${{github.token}}'
+            -e firebase_config='${{secrets.FIREBASE_CONFIG}}'
+            -e google_application_credentials='${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}'
+            -e token='${{secrets.TOKEN}}'

@@ -27,9 +27,10 @@ jobs:
         with:
           playbook: deploy.yml
           key: ${{secrets.SSH_PRIVATE_KEY}}
+          inventory: |
+            [all]
+            ${{secrets.SERVER_IP}} ansible_user=${{secrets.SERVER_USER}}
           options: |
-            -i ${{secrets.SERVER_IP}},
-            -u ${{secrets.SERVER_USER}}
             -e docker_username=${{github.actor}}
             -e docker_password=${{github.token}}
             -e token=${{secrets.TOKEN}}

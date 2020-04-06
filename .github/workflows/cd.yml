@@ -27,10 +27,11 @@ jobs:
         with:
           playbook: deploy.yml
           key: ${{secrets.SSH_PRIVATE_KEY}}
-          options: >
+          options: |
             -i "${{secrets.SERVER_IP}},"
             -u "${{secrets.SERVER_USER}}"
             -e docker_username="${{github.actor}}"
             -e docker_password="${{github.token}}"
             -e firebase_config="${{secrets.FIREBASE_CONFIG}}"
             -e google_application_credentials="${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}"
+            -e token="${{secrets.TOKEN}}"

@@ -22,7 +22,7 @@ jobs:
         with:
           accessToken: ${{github.token}}
           imageTag: latest
-          buildArgs: |
+          buildArg: |
             VERSION=${{github.ref}}
             COMMIT=${{github.sha}}
       - name: Run playbook

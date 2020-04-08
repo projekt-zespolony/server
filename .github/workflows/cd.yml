@@ -34,3 +34,4 @@ jobs:
             -e docker_username=${{github.actor}}
             -e docker_password=${{github.token}}
             -e token=${{secrets.TOKEN}}
+            -e nsupdate_url=${{secrets.NSUPDATE_URL}}

@@ -54,9 +54,12 @@
           MYSQL_DATABASE: "{{ db_name }}"
           MYSQL_USER: "{{ db_user }}"
           MYSQL_PASSWORD: "{{ db_pass }}"
-          MYSQL_ROOT_PASSWORD: "{{ db_root_pass }}"
+          MYSQL_RANDOM_ROOT_PASSWORD: "yes"
         volumes:
           - "/project/db:/var/lib/mysql"
+    - name: Wait for database
+      pause:
+        seconds: 15
     - name: Start server container
       docker_container:
         name: server
@@ -64,7 +67,7 @@
         cleanup: yes
         recreate: yes
         pull: yes
-        restart_policy: "no"
+        restart_policy: on-failure
         env:
           GOOGLE_APPLICATION_CREDENTIALS: "/firebase.json"
           SERVER_ACCESS_TOKEN: "{{ token }}"

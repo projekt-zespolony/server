@@ -11,6 +11,9 @@ import (
 )
 
 var (
+	version string
+	commit  string
+
 	serverPort    = os.Getenv("SERVER_PORT")
 	accessToken   = os.Getenv("SERVER_ACCESS_TOKEN")
 	certsCacheDir = os.Getenv("SERVER_CERTS_CACHE_DIR")
@@ -25,6 +28,7 @@ func main() {
 	e.Pre(middleware.RemoveTrailingSlash())
 	e.Use(middleware.Recover())
 	e.Use(middleware.Logger())
+	e.GET("/", handleGetStatus)
 	e.GET("/sensors", handleGetSensors)
 	e.POST("/sensors", handlePostSensors, middleware.KeyAuth(handleAuth))
 	e.POST("/firebase", handleFirebase, middleware.KeyAuth(handleAuth))

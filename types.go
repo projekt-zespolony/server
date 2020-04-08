@@ -1,5 +1,10 @@
 package main
 
+type Status struct {
+	Version string `json:"version"`
+	Commit  string `json:"commit"`
+}
+
 type Sensors struct {
 	Timestamp   int64   `json:"timestamp"`
 	Temperature float32 `json:"temperature"`

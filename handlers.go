@@ -13,6 +13,15 @@ func handleAuth(key string, c echo.Context) (bool, error) {
 	return false, nil
 }
 
+func handleGetStatus(c echo.Context) error {
+	status := &Status{
+		Version: version,
+		Commit:  commit,
+	}
+
+	return c.JSON(http.StatusOK, status)
+}
+
 func handleGetSensors(c echo.Context) error {
 	return c.JSON(http.StatusOK, currentSensors)
 }

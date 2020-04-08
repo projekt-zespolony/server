@@ -12,6 +12,20 @@
         name: docker
         enabled: yes
         state: started
+    - name: Create directories
+      block:
+        - name: Base directory
+          file:
+            state: directory
+            path: /project
+        - name: DB directory
+          file:
+            state: directory
+            path: /project/db
+        - name: Server directory
+          file:
+            state: directory
+            path: /project/server
     - name: Login to Docker GH registry
       docker_login:
         registry_url: docker.pkg.github.com
@@ -29,6 +43,8 @@
         restart_policy: on-failure
         env:
           MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+        volumes:
+          - "/project/db:/var/lib/mysql"
     - name: Start server container
       docker_container:
         name: server
@@ -41,7 +57,7 @@
           GOOGLE_APPLICATION_CREDENTIALS: "/firebase.json"
           TOKEN: "{{ token }}"
         volumes:
-          - "/home/ubuntu/.firebase.json:/firebase.json:ro"
+          - "/project/server/firebase.json:/firebase.json:ro"
         ports:
           - 80:8080
         links:

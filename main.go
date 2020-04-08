@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/projekt-zespolony/server/pkg/database"
-	"github.com/projekt-zespolony/server/pkg/server"
+	"github.com/projekt-zespolony/server/pkg/router"
 )
 
 var (
@@ -21,7 +21,7 @@ func main() {
 		Addr: os.Getenv("DB_ADDR"),
 	}
 
-	serverOptions := &server.Options{
+	routerOptions := &router.Options{
 		Version:       version,
 		Commit:        commit,
 		AccessToken:   os.Getenv("SERVER_ACCESS_TOKEN"),
@@ -29,5 +29,5 @@ func main() {
 		CertsCacheDir: os.Getenv("SERVER_CERTS_CACHE_DIR"),
 	}
 
-	log.Fatal(server.Run(serverOptions, dbOptions))
+	log.Fatal(router.Run(routerOptions, dbOptions))
 }

@@ -7,7 +7,7 @@ import (
 )
 
 func handleAuth(key string, c echo.Context) (bool, error) {
-	if key == token {
+	if key == accessToken {
 		return true, nil
 	}
 	return false, nil

@@ -7,10 +7,13 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"golang.org/x/crypto/acme/autocert"
 )
 
 var (
-	token = os.Getenv("TOKEN")
+	serverPort = os.Getenv("SERVER_PORT")
+	accessToken = os.Getenv("SERVER_ACCESS_TOKEN")
+	certsCacheDir = os.Getenv("SERVER_CERTS_CACHE_DIR")
 
 	currentSensors = &Sensors{
 		Timestamp: time.Now().Unix(),
@@ -19,10 +22,12 @@ var (
 
 func main() {
 	e := echo.New()
-	e.Debug = true
+	e.AutoTLSManager.Cache = autocert.DirCache(certsCacheDir)
 	e.Pre(middleware.RemoveTrailingSlash())
+	e.Use(middleware.Recover())
+	e.Use(middleware.Logger())
 	e.GET("/sensors", handleGetSensors)
 	e.POST("/sensors", handlePostSensors, middleware.KeyAuth(handleAuth))
 	e.POST("/firebase", handleFirebase, middleware.KeyAuth(handleAuth))
-	log.Fatal(e.Start(":8080"))
+	log.Fatal(e.StartAutoTLS(serverPort))
 }

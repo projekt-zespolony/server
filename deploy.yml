@@ -26,6 +26,10 @@
           file:
             state: directory
             path: /project/server
+        - name: Certs directory
+          file:
+            state: directory
+            path: /project/server/certs
     - name: Login to Docker GH registry
       docker_login:
         registry_url: docker.pkg.github.com
@@ -55,10 +59,13 @@
         restart_policy: on-failure
         env:
           GOOGLE_APPLICATION_CREDENTIALS: "/firebase.json"
-          TOKEN: "{{ token }}"
+          SERVER_ACCESS_TOKEN: "{{ token }}"
+          SERVER_PORT: "443"
+          SERVER_CERTS_CACHE_DIR: /certs
         volumes:
           - "/project/server/firebase.json:/firebase.json:ro"
+          - "/project/server/certs:/certs"
         ports:
-          - 80:8080
+          - 443:443
         links:
           - db

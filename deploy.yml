@@ -51,7 +51,10 @@
         cleanup: yes
         restart_policy: on-failure
         env:
-          MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+          MYSQL_DATABASE: "{{ db_name }}"
+          MYSQL_USER: "{{ db_user }}"
+          MYSQL_PASSWORD: "{{ db_pass }}"
+          MYSQL_ROOT_PASSWORD: "{{ db_root_pass }}"
         volumes:
           - "/project/db:/var/lib/mysql"
     - name: Start server container
@@ -67,6 +70,10 @@
           SERVER_ACCESS_TOKEN: "{{ token }}"
           SERVER_PORT: "443"
           SERVER_CERTS_CACHE_DIR: /certs
+          DB_NAME: "{{ db_name }}"
+          DB_USER: "{{ db_user }}"
+          DB_PASS: "{{ db_pass }}"
+          DB_ADDR: db
         volumes:
           - "/project/server/firebase.json:/firebase.json:ro"
           - "/project/server/certs:/certs"

@@ -38,3 +38,7 @@ jobs:
             -e docker_password=${{github.token}}
             -e token=${{secrets.TOKEN}}
             -e nsupdate_url=${{secrets.NSUPDATE_URL}}
+            -e db_name=${{secrets.DB_NAME}}
+            -e db_user=${{secrets.DB_USER}}
+            -e db_pass=${{secrets.DB_PASS}}
+            -e db_root_pass=${{secrets.DB_ROOT_PASS}}

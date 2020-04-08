@@ -6,5 +6,4 @@ RUN go build
 
 FROM alpine:3
 COPY --from=builder /app/server /server
-EXPOSE 8080
 ENTRYPOINT ["/server"]

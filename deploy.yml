@@ -56,7 +56,7 @@
         cleanup: yes
         recreate: yes
         pull: yes
-        restart_policy: on-failure
+        restart_policy: "no"
         env:
           GOOGLE_APPLICATION_CREDENTIALS: "/firebase.json"
           SERVER_ACCESS_TOKEN: "{{ token }}"

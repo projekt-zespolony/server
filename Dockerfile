@@ -4,7 +4,7 @@ ARG VERSION
 ENV CGO_ENABLED=0
 WORKDIR /app
 COPY . /app
-RUN go build -ldflags="-X main.version=${VERSION} main.commit=${COMMIT}"
+RUN go build -ldflags "-X main.version=${VERSION} -X main.commit=${COMMIT}"
 
 FROM alpine:3
 COPY --from=builder /app/server /server

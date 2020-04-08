@@ -22,8 +22,8 @@ func main() {
 	}
 
 	serverOptions := &server.Options{
-		Version:       "",
-		Commit:        "",
+		Version:       version,
+		Commit:        commit,
 		AccessToken:   os.Getenv("SERVER_ACCESS_TOKEN"),
 		ServerPort:    os.Getenv("SERVER_PORT"),
 		CertsCacheDir: os.Getenv("SERVER_CERTS_CACHE_DIR"),

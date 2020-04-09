@@ -7,7 +7,7 @@ type Status struct {
 
 type Sensors struct {
 	ID          uint    `json:"-"           sql:"column:id;primary_key;auto_increment"`
-	Timestamp   int64   `json:"timestamp"   sql:"column:timestamp;type:timestamp"`
+	Timestamp   int64   `json:"timestamp"   sql:"column:timestamp;type:decimal(15)"`
 	Temperature float32 `json:"temperature" sql:"column:temperature;type:decimal(3,2)"`
 	Pressure    float32 `json:"pressure"    sql:"column:pressure;type:decimal(4,2)"`
 	Humidity    float32 `json:"humidity"    sql:"column:humidity;type:decimal(2,2)"`

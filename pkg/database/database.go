@@ -2,6 +2,7 @@ package database
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -38,6 +39,10 @@ func New(options *Options) (*Database, error) {
 }
 
 func (database *Database) Create(sensors *types.Sensors) error {
+	if sensors.Timestamp == 0 {
+		sensors.Timestamp = time.Now().UTC().Unix()
+	}
+
 	return database.db.Create(sensors).Error
 }
 

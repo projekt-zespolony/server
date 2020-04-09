@@ -59,7 +59,7 @@
           - "/project/db:/var/lib/mysql"
     - name: Wait for database
       pause:
-        seconds: 15
+        seconds: 20
     - name: Start server container
       docker_container:
         name: server

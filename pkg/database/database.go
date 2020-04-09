@@ -29,11 +29,6 @@ func New(options *Options) (*Database, error) {
 		return nil, err
 	}
 
-	err = db.DB().Ping()
-	if err != nil {
-		return nil, err
-	}
-
 	db.AutoMigrate(&types.Sensors{})
 
 	return &Database{

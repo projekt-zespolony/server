@@ -2,6 +2,7 @@ package router
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -87,7 +88,9 @@ func (router *Router) handleGetSensors(c echo.Context) error {
 }
 
 func (router *Router) handlePostSensors(c echo.Context) error {
-	sensors := &types.Sensors{}
+	sensors := &types.Sensors{
+		Timestamp: time.Now().UTC().Unix(),
+	}
 
 	err := c.Bind(sensors)
 	if err != nil {
@@ -103,7 +106,9 @@ func (router *Router) handlePostSensors(c echo.Context) error {
 }
 
 func (router *Router) handleFirebase(c echo.Context) error {
-	notification := &types.Notification{}
+	notification := &types.Notification{
+		Topic: "default",
+	}
 
 	err := c.Bind(notification)
 	if err != nil {

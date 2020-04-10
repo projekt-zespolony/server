@@ -1,54 +1,86 @@
 # API
 
-### GET /sensors
+## Get status
 
-Przykład:
+Returns server version and source git commit from which it was built.
 
-```sh
-curl localhost:8080/sensors
+**Endpoint:**
+
+```http
+GET /
 ```
 
-Odpowiedź:
+**Response:**
 
 ```json
+HTTP/1.1 200 OK
 {
-    // epoka uniksowa (sekundy)
-    "timestamp": 123456789,
-    // temperatura (stopnie celsjusza)
-    "temperature": 20.50,
-    // ciśnienie (hPa)
-    "pressure": 1012.22,
-    // wilgotność (procent)
-    "humidity": 50.05,
-    // czad (?)
-    "gas": 100.88
+  "version": "refs/heads/master",
+  "commit": "88694ddfb91153cd470bec20d23aee360feccdf7"
 }
 ```
 
-### POST /sensors
+## Get latest sensors readings
 
-!!! note
-    Wymaga autentykacji tokenem.
+Returns newest sensors readings found in the database.
 
-Przykład:
+**Endpoint:**
 
-```sh
-curl localhost:8080/sensors -X POST -d '{"temperature":11}' --header 'authorization: Bearer TOKEN' --header 'content-type: application/json'
+```http
+GET /sensors
 ```
 
-Żądanie i odpowiedź:
+**Response:**
 
 ```json
+HTTP/1.1 200 OK
 {
-    // epoka uniksowa (sekundy)
-    "timestamp": 123456789,
-    // temperatura (stopnie celsjusza)
-    "temperature": 20.50,
-    // ciśnienie (hPa)
-    "pressure": 1012.22,
-    // wilgotność (procent)
-    "humidity": 50.05,
-    // czad (?)
-    "gas": 100.88
+  "timestamp": 1586532636,
+  "temperature": 12,
+  "pressure": 1001.5,
+  "humidity": 41,
+  "gas": 14
 }
+
+```
+
+## Create new sensors readings
+
+Create a new entry in the database with given sensors readings.
+
+**Endpoint:**
+
+```http
+POST /sensors
+```
+
+**Headers:**
+
+| Name           | Value             |
+|----------------|-------------------|
+| Content-Type   | application/json  |
+| Authentication | Bearer **$TOKEN** |
+
+**Data:**
+
+| Parameter   | Description    | Unit       | Default |
+|-------------|----------------|------------|:-------:|
+| timestamp   | Unix timestamp | seconds    |*current*|
+| temperature | Temperature    | celsius    |    0    |
+| humidity    | Humidity       | percentage |    0    |
+| pressure    | Pressure       | hPa        |    0    |
+| gas         | Gas            | kOhm       |    0    |
+
+**Response:**
+
+```json
+HTTP/1.1 201 Created
+{
+  "timestamp": 1586532636,
+  "temperature": 12,
+  "pressure": 1001.5,
+  "humidity": 41,
+  "gas": 14
+}
+
 ```

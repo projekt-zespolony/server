@@ -4,13 +4,13 @@
 
 Returns server version and source git commit from which it was built.
 
-**Endpoint:**
+**Endpoint**:
 
 ```http
 GET /
 ```
 
-**Response:**
+**Response**:
 
 ```json
 HTTP/1.1 200 OK
@@ -24,13 +24,13 @@ HTTP/1.1 200 OK
 
 Returns newest sensors readings found in the database.
 
-**Endpoint:**
+**Endpoint**:
 
 ```http
 GET /sensors
 ```
 
-**Response:**
+**Response**:
 
 ```json
 HTTP/1.1 200 OK
@@ -41,27 +41,26 @@ HTTP/1.1 200 OK
   "humidity": 41,
   "gas": 14
 }
-
 ```
 
 ## Create new sensors readings
 
 Create a new entry in the database with given sensors readings.
 
-**Endpoint:**
+**Endpoint**:
 
 ```http
 POST /sensors
 ```
 
-**Headers:**
+**Headers**:
 
 | Name           | Value             |
 |----------------|-------------------|
 | Content-Type   | application/json  |
 | Authentication | Bearer **$TOKEN** |
 
-**Data:**
+**Data**:
 
 | Parameter   | Description    | Unit       | Default |
 |-------------|----------------|------------|:-------:|
@@ -71,7 +70,7 @@ POST /sensors
 | pressure    | Pressure       | hPa        |    0    |
 | gas         | Gas            | kOhm       |    0    |
 
-**Response:**
+**Response**:
 
 ```json
 HTTP/1.1 201 Created
@@ -83,4 +82,34 @@ HTTP/1.1 201 Created
   "gas": 14
 }
 
+```
+
+## Common errors
+
+Missing `Authorization` header:
+
+```json
+HTTP/1.1 400 Bad Request
+{
+  "message": "missing key in request header"
+}
+```
+
+Wrong token:
+
+```json
+HTTP/1.1 401 Unauthorized
+{
+  "message": "Unauthorized"
+}
+```
+
+
+Wrong data format:
+
+```json
+HTTP/1.1 500 Internal Server Error
+{
+  "message": "Internal Server Errror"
+}
 ```

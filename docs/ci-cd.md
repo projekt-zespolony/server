@@ -1,6 +1,6 @@
 # CI/CD
 
-Poniżej przedstawiono proces ciągłej integracji (CI) oraz ciągłego dostarczania (CD) w formie schematu blokowego.
+Below flowchat shows the CI/CD process of the server.
 
 ## Flowchart
 

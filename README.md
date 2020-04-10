@@ -1,8 +1,6 @@
 # Server
 
-Repozytorium zawierające kod części serwerowej projektu zespołowego.
+Repository holding the code of the project's server part.
 
-## Dokumentacja
-
-- [`REST API`](https://projekt-zespolony.github.io/server)
-- [`Kod`](https://godoc.org/github.com/projekt-zespolony/server)
+[Documentation](https://projekt-zespolony.github.io/server)
+- [`Code`](https://godoc.org/github.com/projekt-zespolony/server)

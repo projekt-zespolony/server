@@ -1,4 +1,4 @@
-site_name: Dokumentacja serwera projektu zespołowego
+site_name: Server documentation
 repo_url: https://github.com/projekt-zespolony/server
 theme:
   name: material

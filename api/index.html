@@ -243,6 +243,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#common-errors" class="md-nav__link">
+    Common errors
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -308,6 +315,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#common-errors" class="md-nav__link">
+    Common errors
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -331,12 +345,12 @@
                 <h1 id="api">API</h1>
 <h2 id="get-status">Get status</h2>
 <p>Returns server version and source git commit from which it was built.</p>
-<p><strong>Endpoint:</strong></p>
+<p><strong>Endpoint</strong>:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">GET /</span>
 </code></pre></div>
 
 
-<p><strong>Response:</strong></p>
+<p><strong>Response</strong>:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">HTTP/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="err">OK</span>
 <span class="p">{</span>
   <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;refs/heads/master&quot;</span><span class="p">,</span>
@@ -347,12 +361,12 @@
 
 <h2 id="get-latest-sensors-readings">Get latest sensors readings</h2>
 <p>Returns newest sensors readings found in the database.</p>
-<p><strong>Endpoint:</strong></p>
+<p><strong>Endpoint</strong>:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">GET /sensors</span>
 </code></pre></div>
 
 
-<p><strong>Response:</strong></p>
+<p><strong>Response</strong>:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">HTTP/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="err">OK</span>
 <span class="p">{</span>
   <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1586532636</span><span class="p">,</span>
@@ -366,12 +380,12 @@
 
 <h2 id="create-new-sensors-readings">Create new sensors readings</h2>
 <p>Create a new entry in the database with given sensors readings.</p>
-<p><strong>Endpoint:</strong></p>
+<p><strong>Endpoint</strong>:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">POST /sensors</span>
 </code></pre></div>
 
 
-<p><strong>Headers:</strong></p>
+<p><strong>Headers</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -390,7 +404,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Data:</strong></p>
+<p><strong>Data</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -433,7 +447,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Response:</strong></p>
+<p><strong>Response</strong>:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">HTTP/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="err">Created</span>
 <span class="p">{</span>
   <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1586532636</span><span class="p">,</span>
@@ -441,6 +455,31 @@
   <span class="nt">&quot;pressure&quot;</span><span class="p">:</span> <span class="mf">1001.5</span><span class="p">,</span>
   <span class="nt">&quot;humidity&quot;</span><span class="p">:</span> <span class="mi">41</span><span class="p">,</span>
   <span class="nt">&quot;gas&quot;</span><span class="p">:</span> <span class="mi">14</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<h2 id="common-errors">Common errors</h2>
+<p>Missing <code>Authorization</code> header:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">HTTP/</span><span class="mf">1.1</span> <span class="mi">400</span> <span class="err">Bad</span> <span class="err">Request</span>
+<span class="p">{</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;missing key in request header&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>Wrong token:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">HTTP/</span><span class="mf">1.1</span> <span class="mi">401</span> <span class="err">Unauthorized</span>
+<span class="p">{</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Unauthorized&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+<p>Wrong data format:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">HTTP/</span><span class="mf">1.1</span> <span class="mi">500</span> <span class="err">Internal</span> <span class="err">Server</span> <span class="err">Error</span>
+<span class="p">{</span>
+  <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Internal Server Errror&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
                 

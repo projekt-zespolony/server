@@ -120,5 +120,5 @@ func (router *Router) handleFirebase(c echo.Context) error {
 		return err
 	}
 
-	return c.JSON(http.StatusOK, notification)
+	return c.JSON(http.StatusCreated, notification)
 }

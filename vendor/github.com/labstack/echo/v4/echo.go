@@ -230,7 +230,7 @@ const (
 
 const (
 	// Version of Echo
-	Version = "4.1.15"
+	Version = "4.1.16"
 	website = "https://echo.labstack.com"
 	// http://patorjk.com/software/taag/#p=display&f=Small%20Slant&t=Echo
 	banner = `
@@ -783,6 +783,9 @@ func NewHTTPError(code int, message ...interface{}) *HTTPError {
 
 // Error makes it compatible with `error` interface.
 func (he *HTTPError) Error() string {
+	if he.Internal == nil {
+		return fmt.Sprintf("code=%d, message=%v", he.Code, he.Message)
+	}
 	return fmt.Sprintf("code=%d, message=%v, internal=%v", he.Code, he.Message, he.Internal)
 }
 

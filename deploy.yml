@@ -30,11 +30,6 @@
           file:
             state: directory
             path: /project/server/certs
-    - name: Create cron job for nsupdate
-      cron:
-        name: nsupdate
-        special_time: weekly
-        state: absent
     - name: Login to Docker GH registry
       docker_login:
         registry_url: docker.pkg.github.com

@@ -53,7 +53,7 @@ func Run(routerOptions *Options, dbOptions *database.Options) error {
 	e.GET("/", router.handleGetStatus)
 	e.GET("/sensors", router.handleGetSensors)
 	e.POST("/sensors", router.handlePostSensors, middleware.KeyAuth(router.handleAuth))
-	e.POST("/firebase", router.handleFirebase, middleware.KeyAuth(router.handleAuth))
+	e.POST("/firebase", router.handlePostFirebase, middleware.KeyAuth(router.handleAuth))
 
 	if routerOptions.ServerPort == "443" {
 		return e.StartAutoTLS(":" + routerOptions.ServerPort)
@@ -105,7 +105,7 @@ func (router *Router) handlePostSensors(c echo.Context) error {
 	return c.JSON(http.StatusCreated, sensors)
 }
 
-func (router *Router) handleFirebase(c echo.Context) error {
+func (router *Router) handlePostFirebase(c echo.Context) error {
 	notification := &types.Notification{
 		Topic: "default",
 	}

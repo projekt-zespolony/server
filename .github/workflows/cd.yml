@@ -36,8 +36,7 @@ jobs:
           options: |
             -e docker_username=${{github.actor}}
             -e docker_password=${{github.token}}
-            -e token=${{secrets.TOKEN}}
-            -e nsupdate_url=${{secrets.NSUPDATE_URL}}
+            -e server_access_token=${{secrets.SERVER_ACCESS_TOKEN}}
             -e db_name=${{secrets.DB_NAME}}
             -e db_user=${{secrets.DB_USER}}
             -e db_pass=${{secrets.DB_PASS}}

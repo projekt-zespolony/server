@@ -34,7 +34,7 @@
       cron:
         name: nsupdate
         special_time: weekly
-        job: "curl {{ nsupdate_url }}"
+        state: absent
     - name: Login to Docker GH registry
       docker_login:
         registry_url: docker.pkg.github.com
@@ -70,7 +70,7 @@
         restart_policy: on-failure
         env:
           GOOGLE_APPLICATION_CREDENTIALS: "/firebase.json"
-          SERVER_ACCESS_TOKEN: "{{ token }}"
+          SERVER_ACCESS_TOKEN: "{{ server_access_token }}"
           SERVER_PORT: "443"
           SERVER_CERTS_CACHE_DIR: /certs
           DB_NAME: "{{ db_name }}"

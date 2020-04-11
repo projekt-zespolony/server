@@ -35,10 +35,6 @@
         registry_url: docker.pkg.github.com
         username: "{{ docker_username }}"
         password: "{{ docker_password }}"
-    - name: Prune Docker leftovers
-      docker_prune:
-        images: yes
-        containers: yes
     - name: Start MySQL container
       docker_container:
         name: db

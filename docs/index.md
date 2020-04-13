@@ -17,3 +17,9 @@ Start the server:
 ```sh
 docker run -d --rm --name server --links db -p 8080:80 -e DB_NAME=db -e DB_USER=user -e DB_PASS=pass -e DB_ADDR=db -e SERVER_PORT=80 -e SERVER_ACCESS_TOKEN=token server:latest
 ```
+
+Check server status:
+
+```sh
+curl localhost:8080/
+```

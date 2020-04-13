@@ -26,8 +26,8 @@ type Options struct {
 	CertsCacheDir string
 }
 
-func Run(routerOptions *Options, dbOptions *database.Options) error {
-	fb, err := firebase.New()
+func Run(routerOptions *Options, dbOptions *database.Options, firebaseOptions *firebase.Options) error {
+	fb, err := firebase.New(firebaseOptions)
 	if err != nil {
 		return err
 	}

@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/projekt-zespolony/server/pkg/database"
+	"github.com/projekt-zespolony/server/pkg/firebase"
 	"github.com/projekt-zespolony/server/pkg/router"
 )
 
@@ -14,6 +15,10 @@ var (
 )
 
 func main() {
+	firebaseOptions := &firebase.Options{
+		Disabled: os.Getenv("FIREBASE_DISABLED") != "",
+	}
+
 	dbOptions := &database.Options{
 		User: os.Getenv("DB_USER"),
 		Pass: os.Getenv("DB_PASS"),
@@ -29,5 +34,5 @@ func main() {
 		CertsCacheDir: os.Getenv("SERVER_CERTS_CACHE_DIR"),
 	}
 
-	log.Fatal(router.Run(routerOptions, dbOptions))
+	log.Fatal(router.Run(routerOptions, dbOptions, firebaseOptions))
 }

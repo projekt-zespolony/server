@@ -14,7 +14,15 @@ type Firebase struct {
 	client *messaging.Client
 }
 
-func New() (*Firebase, error) {
+type Options struct {
+	Disabled bool
+}
+
+func New(options *Options) (*Firebase, error) {
+	if options.Disabled {
+		return &Firebase{}, nil
+	}
+
 	app, err := fb.NewApp(context.Background(), nil)
 	if err != nil {
 		return nil, err

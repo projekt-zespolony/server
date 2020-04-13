@@ -275,18 +275,8 @@
                 
                 
                 <h1 id="getting-started">Getting started</h1>
-<p>Start the database:</p>
-<div class="codehilite"><pre><span></span><code>docker run -d --rm --name db -e <span class="nv">MYSQL_DATABASE</span><span class="o">=</span>db -e <span class="nv">MYSQL_USER</span><span class="o">=</span>user -e <span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>pass -e <span class="nv">MYSQL_RANDOM_ROOT_PASSWORD</span><span class="o">=</span>yes mysql:8
-</code></pre></div>
-
-
-<p>Build the server image:</p>
-<div class="codehilite"><pre><span></span><code>docker build -t server:latest .
-</code></pre></div>
-
-
-<p>Start the server:</p>
-<div class="codehilite"><pre><span></span><code>docker run -d --rm --name server --links db -p <span class="m">8080</span>:80 -e <span class="nv">DB_NAME</span><span class="o">=</span>db -e <span class="nv">DB_USER</span><span class="o">=</span>user -e <span class="nv">DB_PASS</span><span class="o">=</span>pass -e <span class="nv">DB_ADDR</span><span class="o">=</span>db -e <span class="nv">SERVER_PORT</span><span class="o">=</span><span class="m">80</span> -e <span class="nv">SERVER_ACCESS_TOKEN</span><span class="o">=</span>token server:latest
+<p>Start database and server:</p>
+<div class="codehilite"><pre><span></span><code>docker-compose up
 </code></pre></div>
 
 

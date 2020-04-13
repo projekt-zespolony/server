@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  db:
+    image: mysql:8
+    container_name: db
+    environment:
+      MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    networks:
+      - common
+  server:
+    build:
+      context: .
+      args:
+        VERSION: dev
+        COMMIT: dev
+    container_name: server
+    restart: on-failure
+    environment:
+      FIREBASE_DISABLED: "yes"
+      SERVER_ACCESS_TOKEN: token
+      SERVER_PORT: 8080
+      DB_NAME: db
+      DB_USER: user
+      DB_PASS: pass
+      DB_ADDR: db
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    networks:
+      - common
+
+networks:
+  common:

@@ -288,6 +288,11 @@
 <p>Start the server:</p>
 <div class="codehilite"><pre><span></span><code>docker run -d --rm --name server --links db -p <span class="m">8080</span>:80 -e <span class="nv">DB_NAME</span><span class="o">=</span>db -e <span class="nv">DB_USER</span><span class="o">=</span>user -e <span class="nv">DB_PASS</span><span class="o">=</span>pass -e <span class="nv">DB_ADDR</span><span class="o">=</span>db -e <span class="nv">SERVER_PORT</span><span class="o">=</span><span class="m">80</span> -e <span class="nv">SERVER_ACCESS_TOKEN</span><span class="o">=</span>token server:latest
 </code></pre></div>
+
+
+<p>Check server status:</p>
+<div class="codehilite"><pre><span></span><code>curl localhost:8080/
+</code></pre></div>
                 
               
               

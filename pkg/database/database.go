@@ -29,7 +29,7 @@ func New(options *Options) (*Database, error) {
 		return nil, err
 	}
 
-	db.AutoMigrate(&types.Sensors{})
+	db.AutoMigrate(&types.Sensors{}, &types.OptimizationData{})
 
 	return &Database{
 		db:      db,

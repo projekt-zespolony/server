@@ -40,7 +40,7 @@
         name: db
         image: mysql:8
         cleanup: yes
-        restart_policy: on-failure
+        restart_policy: always
         env:
           MYSQL_DATABASE: "{{ db_name }}"
           MYSQL_USER: "{{ db_user }}"
@@ -58,7 +58,7 @@
         cleanup: yes
         recreate: yes
         pull: yes
-        restart_policy: on-failure
+        restart_policy: always
         env:
           GOOGLE_APPLICATION_CREDENTIALS: "/firebase.json"
           SERVER_ACCESS_TOKEN: "{{ server_access_token }}"

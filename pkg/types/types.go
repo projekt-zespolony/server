@@ -15,10 +15,10 @@ type Sensors struct {
 }
 
 type OptimizationData struct {
-	ID				 uint 	`json:"-"				 sql:"column:id;			  primary_key;		 auto_increment"`
-	SensorsID   	 uint   `json:"-" 				 sql:"column:sensorsID	 	  type:int unsigned; not null"`
-	PeopleInTheRoom  uint 	`json:"peopleInTheRoom"	 sql:"column:peopleInTheRoom  type:int unsigned; not null"`
-	WindowsAreOpened bool	`json:"WindowsAreOpened" sql:"column:windowsAreOpened type:boolean;      not null"`
+	ID				 uint 	`json:"-"				   sql:"column:id;			  	primary_key;	   auto_increment"`
+	SensorsID   	 uint   `json:"-" 				   sql:"column:sensorsID	 	type:int unsigned; not null"`
+	PeopleInTheRoom  uint 	`json:"people_in_the_room" sql:"column:peopleInTheRoom  type:int unsigned; not null"`
+	WindowsAreOpened bool	`json:"windows_are_opened" sql:"column:windowsAreOpened type:boolean;      not null"`
 }
 
 type Notification struct {

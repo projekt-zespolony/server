@@ -6,6 +6,14 @@ on:
       - '**.go'
       - 'go.*'
       - '.github/workflows/*'
+      - 'Dockerfile'
+      - 'docker-compose.yml'
+
+env:
+  HOST: localhost
+  PORT: 8080
+  VERSION: ${{github.ref}}
+  COMMIT: ${{github.sha}}
 
 jobs:
   ci:
@@ -13,11 +21,24 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Setup Go
-        uses: actions/setup-go@v1
-        with:
-          go-version: 1.14.x
-      - name: Build binary
-        run: go build -v
-      - name: Test code
-        run: go test -v -count 3
+      - name: Compose build
+        run: >
+          docker-compose build
+            --build-arg VERSION=$VERSION
+            --build-arg COMMIT=$COMMIT
+      - name: Compose up
+        run: >
+          docker-compose up -d
+      - name: Wait for it
+        run: |
+          for try in $(seq 5); do
+            sleep 5
+            if nc -z $HOST $PORT; then
+              exit 0
+            fi
+          done
+          exit 1
+      - name: Test API /
+        run: |
+          curl $HOST:$PORT/ | jq -r .version | egrep "^$VERSION$"
+          curl $HOST:$PORT/ | jq -r .commit | egrep "^$COMMIT$"

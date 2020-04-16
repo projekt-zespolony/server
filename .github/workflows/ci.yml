@@ -22,12 +22,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Compose build
-        run: >
-          docker-compose build
-            --build-arg VERSION=$VERSION
+        run: |
+          docker-compose build \
+            --build-arg VERSION=$VERSION \
             --build-arg COMMIT=$COMMIT
       - name: Compose up
-        run: >
+        run: |
           docker-compose up -d
       - name: Wait for it
         run: |

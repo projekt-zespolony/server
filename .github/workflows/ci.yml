@@ -33,7 +33,7 @@ jobs:
         run: |
           for try in $(seq 5); do
             sleep 5
-            if nc -z $HOST $PORT; then
+            if curl $HOST:$PORT; then
               exit 0
             fi
           done

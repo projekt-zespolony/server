@@ -37,10 +37,11 @@ def compose(args)
   system("docker-compose #{args}", exception: true)
 end
 
-compose "build --build-arg VERSION=#{status[:version]} --build-arg COMMIT=#{status[:commit]}"
-compose 'up -d'
-Signal.trap 'EXIT' do
-  compose 'stop'
+compose("build --build-arg VERSION=#{status[:version]} --build-arg COMMIT=#{status[:commit]}")
+compose('up -d')
+
+trap 'EXIT' do
+  compose('stop')
 end
 
 print 'Waiting for server to come online '

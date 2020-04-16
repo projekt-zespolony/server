@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "7b177c3c-806b-448d-a52a-acd1972698e2",
+		"name": "server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sensors",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "token",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"timestamp\": 11111111,\n    \"temperature\": 20.5,\n    \"humidity\": 60.1,\n    \"pressure\": 1000.2,\n    \"gas\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/sensors",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sensors"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "status",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"timestamp\": 11111111,\n    \"temperature\": 20.5,\n    \"humidity\": 60.1,\n    \"pressure\": 1000.2,\n    \"gas\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/sensors",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sensors"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 16 Apr 2020 14:30:39 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "85"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": 11111111,\n    \"temperature\": 20.5,\n    \"pressure\": 1000.2,\n    \"humidity\": 60.1,\n    \"gas\": 10\n}"
+				}
+			]
+		},
+		{
+			"name": "sensors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/sensors",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sensors"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "sensors",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/sensors",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sensors"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 16 Apr 2020 14:32:04 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "85"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": 11111111,\n    \"temperature\": 20.5,\n    \"pressure\": 1000.2,\n    \"humidity\": 60.1,\n    \"gas\": 10\n}"
+				}
+			]
+		},
+		{
+			"name": "status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080",
+					"host": [
+						"localhost"
+					],
+					"port": "8080"
+				}
+			},
+			"response": [
+				{
+					"name": "status",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080",
+							"host": [
+								"localhost"
+							],
+							"port": "8080"
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 16 Apr 2020 14:33:14 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "40"
+						}
+					],
+					"cookie": [],
+					"body": "{\"version\":\"version\",\"commit\":\"commit\"}\n"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}

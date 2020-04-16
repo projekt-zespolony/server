@@ -8,13 +8,7 @@ on:
       - '.github/workflows/*'
       - 'Dockerfile'
       - 'docker-compose.yml'
-
-env:
-  HOST: localhost
-  PORT: 8080
-  VERSION: ${{github.ref}}
-  COMMIT: ${{github.sha}}
-  TOKEN: token
+      - 'test.rb'
 
 jobs:
   ci:
@@ -22,32 +16,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Compose build
-        run: |
-          docker-compose build \
-            --build-arg VERSION=$VERSION \
-            --build-arg COMMIT=$COMMIT
-      - name: Compose up
-        run: |
-          docker-compose up -d
-      - name: Wait for it
-        run: |
-          for try in $(seq 5); do
-            echo $try
-            sleep 5
-            if curl -s $HOST:$PORT; then
-              exit 0
-            fi
-          done
-          exit 1
-      - name: GET /
-        run: |
-          curl -s $HOST:$PORT/ | jq -r .version | egrep "^$VERSION$"
-          curl -s $HOST:$PORT/ | jq -r .commit | egrep "^$COMMIT$"
-      - name: POST /sensors
-        run: |
-          curl -s $HOST:$PORT/sensors \
-               -H "Content-Type: application/json" \
-               -H "Authorization: Bearer $TOKEN" \
-               -d '{"temperature":20.5}' | \
-          jq .temperature | egrep "^20\.5$"
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2
+      - name: Run tests
+        run: ./test.rb

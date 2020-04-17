@@ -17,7 +17,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Compose up
-        run: docker-compose up -d
+        run: docker-compose up --detach --build
       - name: Wait a bit
         run: sleep 15
       - name: Setup node

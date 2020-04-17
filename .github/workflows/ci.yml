@@ -27,4 +27,4 @@ jobs:
       - name: Install newman
         run: npm install -g newman
       - name: Run newman
-        run: newman run postman.json
+        run: newman run --iteration-count 5 --delay-request 100 postman.json

@@ -2,6 +2,7 @@ package router
 
 import (
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/labstack/echo/v4"
@@ -52,6 +53,7 @@ func Run(routerOptions *Options, dbOptions *database.Options, firebaseOptions *f
 
 	e.GET("/", router.handleGetStatus)
 	e.GET("/sensors", router.handleGetSensors)
+	e.GET("/sensors/:hours", router.handleGetSensorsHours)
 	e.POST("/sensors", router.handlePostSensors, middleware.KeyAuth(router.handleAuth))
 	e.POST("/firebase", router.handlePostFirebase, middleware.KeyAuth(router.handleAuth))
 
@@ -80,6 +82,22 @@ func (router *Router) handleGetStatus(c echo.Context) error {
 
 func (router *Router) handleGetSensors(c echo.Context) error {
 	sensors, err := router.db.Latest()
+	if err != nil {
+		return err
+	}
+
+	return c.JSON(http.StatusOK, sensors)
+}
+
+func (router *Router) handleGetSensorsHours(c echo.Context) error {
+	hours, err := strconv.ParseInt(c.Param("hours"), 10, 32)
+	if err != nil {
+		return err
+	}
+
+	timestamp := time.Now().UTC().Unix() - hours*60*60
+
+	sensors, err := router.db.Since(timestamp)
 	if err != nil {
 		return err
 	}

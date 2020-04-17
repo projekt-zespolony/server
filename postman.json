@@ -291,8 +291,8 @@
 							"    pm.response.to.be.withBody;",
 							"});",
 							"",
-							"pm.test(\"Response is a JSON array with length == 0\", function () {",
-							"    pm.expect(pm.response.json().length).to.be.equal(0);    ",
+							"pm.test(\"Response is a JSON array with length <= 1\", function () {",
+							"    pm.expect(pm.response.json().length).to.be.at.most(1);    ",
 							"});"
 						],
 						"type": "text/javascript"

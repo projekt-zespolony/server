@@ -7,3 +7,5 @@ plugins:
 markdown_extensions:
   - codehilite
   - admonition
+  - toc:
+      permalink: 

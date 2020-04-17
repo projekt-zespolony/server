@@ -237,6 +237,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#get-sensors-readings-from-x-hours" class="md-nav__link">
+    Get sensors readings from x hours
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#create-new-sensors-readings" class="md-nav__link">
     Create new sensors readings
   </a>
@@ -333,6 +340,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#get-sensors-readings-from-x-hours" class="md-nav__link">
+    Get sensors readings from x hours
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#create-new-sensors-readings" class="md-nav__link">
     Create new sensors readings
   </a>
@@ -399,6 +413,60 @@
   <span class="nt">&quot;humidity&quot;</span><span class="p">:</span> <span class="mi">41</span><span class="p">,</span>
   <span class="nt">&quot;gas&quot;</span><span class="p">:</span> <span class="mi">14</span>
 <span class="p">}</span>
+</code></pre></div>
+
+
+<h2 id="get-sensors-readings-from-x-hours">Get sensors readings from <code>x</code> hours</h2>
+<p>Returns sensors readings that were created within <code>x</code> hours from now.</p>
+<p><strong>Endpoint</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">GET /sensors/:hours</span>
+</code></pre></div>
+
+
+<p><strong>Parameters</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th align="center">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hours</td>
+<td>Number of hours since now</td>
+<td align="center">integer</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Response</strong>:</p>
+<div class="codehilite"><pre><span></span><code><span class="err">HTTP/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="err">OK</span>
+<span class="p">[</span>
+  <span class="err">...</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1587128346</span><span class="p">,</span>
+    <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">20.5</span><span class="p">,</span>
+    <span class="nt">&quot;pressure&quot;</span><span class="p">:</span> <span class="mf">1000.2</span><span class="p">,</span>
+    <span class="nt">&quot;humidity&quot;</span><span class="p">:</span> <span class="mf">60.1</span><span class="p">,</span>
+    <span class="nt">&quot;gas&quot;</span><span class="p">:</span> <span class="mi">10</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1587128347</span><span class="p">,</span>
+    <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">20.5</span><span class="p">,</span>
+    <span class="nt">&quot;pressure&quot;</span><span class="p">:</span> <span class="mf">1000.2</span><span class="p">,</span>
+    <span class="nt">&quot;humidity&quot;</span><span class="p">:</span> <span class="mf">60.1</span><span class="p">,</span>
+    <span class="nt">&quot;gas&quot;</span><span class="p">:</span> <span class="mi">10</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1587128348</span><span class="p">,</span>
+    <span class="nt">&quot;temperature&quot;</span><span class="p">:</span> <span class="mf">20.5</span><span class="p">,</span>
+    <span class="nt">&quot;pressure&quot;</span><span class="p">:</span> <span class="mf">1000.2</span><span class="p">,</span>
+    <span class="nt">&quot;humidity&quot;</span><span class="p">:</span> <span class="mf">60.1</span><span class="p">,</span>
+    <span class="nt">&quot;gas&quot;</span><span class="p">:</span> <span class="mi">10</span>
+  <span class="p">}</span>
+  <span class="err">...</span>
+<span class="p">]</span>
 </code></pre></div>
 
 

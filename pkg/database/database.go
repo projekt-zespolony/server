@@ -55,7 +55,7 @@ func (database *Database) Latest() (*types.Sensors, error) {
 func (database *Database) Since(timestamp int64) ([]*types.Sensors, error) {
 	sensors := []*types.Sensors{}
 
-	err := database.db.Where("timestamp >= ?", timestamp).Find(&sensors).Error
+	err := database.db.Where("timestamp > ?", timestamp).Find(&sensors).Error
 	if err != nil {
 		return nil, err
 	}

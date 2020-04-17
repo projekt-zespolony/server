@@ -43,6 +43,53 @@ HTTP/1.1 200 OK
 }
 ```
 
+## Get sensors readings from `x` hours
+
+Returns sensors readings that were created within `x` hours from now.
+
+**Endpoint**:
+
+```http
+GET /sensors/:hours
+```
+
+**Parameters**:
+
+| Parameter   | Description               | Type    |
+|-------------|---------------------------|:-------:|
+| hours       | Number of hours since now | integer |
+
+**Response**:
+
+```json
+HTTP/1.1 200 OK
+[
+  ...
+  {
+    "timestamp": 1587128346,
+    "temperature": 20.5,
+    "pressure": 1000.2,
+    "humidity": 60.1,
+    "gas": 10
+  },
+  {
+    "timestamp": 1587128347,
+    "temperature": 20.5,
+    "pressure": 1000.2,
+    "humidity": 60.1,
+    "gas": 10
+  },
+  {
+    "timestamp": 1587128348,
+    "temperature": 20.5,
+    "pressure": 1000.2,
+    "humidity": 60.1,
+    "gas": 10
+  }
+  ...
+]
+```
+
 ## Create new sensors readings
 
 Create a new entry in the database with given sensors readings.

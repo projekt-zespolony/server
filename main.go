@@ -27,11 +27,10 @@ func main() {
 	}
 
 	routerOptions := &router.Options{
-		Version:       version,
-		Commit:        commit,
-		AccessToken:   os.Getenv("SERVER_ACCESS_TOKEN"),
-		ServerPort:    os.Getenv("SERVER_PORT"),
-		CertsCacheDir: os.Getenv("SERVER_CERTS_CACHE_DIR"),
+		Version:     version,
+		Commit:      commit,
+		AccessToken: os.Getenv("SERVER_ACCESS_TOKEN"),
+		ServerPort:  os.Getenv("SERVER_PORT"),
 	}
 
 	log.Fatal(router.Run(routerOptions, dbOptions, firebaseOptions))

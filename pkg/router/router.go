@@ -10,7 +10,6 @@ import (
 	"github.com/projekt-zespolony/server/pkg/database"
 	"github.com/projekt-zespolony/server/pkg/firebase"
 	"github.com/projekt-zespolony/server/pkg/types"
-	"golang.org/x/crypto/acme/autocert"
 )
 
 type Router struct {
@@ -20,11 +19,10 @@ type Router struct {
 }
 
 type Options struct {
-	Version       string
-	Commit        string
-	AccessToken   string
-	ServerPort    string
-	CertsCacheDir string
+	Version     string
+	Commit      string
+	AccessToken string
+	ServerPort  string
 }
 
 func Run(routerOptions *Options, dbOptions *database.Options, firebaseOptions *firebase.Options) error {
@@ -45,7 +43,6 @@ func Run(routerOptions *Options, dbOptions *database.Options, firebaseOptions *f
 	}
 
 	e := echo.New()
-	e.AutoTLSManager.Cache = autocert.DirCache(routerOptions.CertsCacheDir)
 
 	e.Pre(middleware.RemoveTrailingSlash())
 	e.Use(middleware.Recover())
@@ -57,11 +54,7 @@ func Run(routerOptions *Options, dbOptions *database.Options, firebaseOptions *f
 	e.POST("/sensors", router.handlePostSensors, middleware.KeyAuth(router.handleAuth))
 	e.POST("/firebase", router.handlePostFirebase, middleware.KeyAuth(router.handleAuth))
 
-	if routerOptions.ServerPort == "443" {
-		return e.StartAutoTLS(":" + routerOptions.ServerPort)
-	} else {
-		return e.Start(":" + routerOptions.ServerPort)
-	}
+	return e.Start(":" + routerOptions.ServerPort)
 }
 
 func (router *Router) handleAuth(key string, c echo.Context) (bool, error) {

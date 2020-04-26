@@ -63,14 +63,12 @@
           GOOGLE_APPLICATION_CREDENTIALS: "/firebase.json"
           SERVER_ACCESS_TOKEN: "{{ server_access_token }}"
           SERVER_PORT: "80"
-          SERVER_CERTS_CACHE_DIR: /certs
           DB_NAME: "{{ db_name }}"
           DB_USER: "{{ db_user }}"
           DB_PASS: "{{ db_pass }}"
           DB_ADDR: db
         volumes:
           - "/project/server/firebase.json:/firebase.json:ro"
-          - "/project/server/certs:/certs"
         ports:
           - 80:80
         links:

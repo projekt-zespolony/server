@@ -2,14 +2,8 @@ name: CD
 
 on:
   push:
-    branches:
-      - master
-    paths:
-      - '**.go'
-      - 'go.*'
-      - 'Dockerfile'
-      - 'deploy.yml'
-      - '.github/workflows/*'
+    tags:
+      - 'v*'
 
 jobs:
   cd:

@@ -12,15 +12,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Publish image
+        id: docker
         uses: matootie/github-docker@v2.2.2
         with:
           accessToken: ${{github.token}}
-          imageTag: latest
           buildArg: |
             VERSION=${{github.ref}}
             COMMIT=${{github.sha}}
       - name: Run playbook
-        uses: dawidd6/action-ansible-playbook@v1
+        uses: dawidd6/action-ansible-playbook@v2
         with:
           playbook: deploy.yml
           key: ${{secrets.SSH_PRIVATE_KEY}}
@@ -28,6 +28,7 @@ jobs:
             [all]
             ${{secrets.SERVER_IP}} ansible_user=${{secrets.SERVER_USER}}
           options: |
+            -e docker_image=${{steps.docker.outputs.imageURL}}
             -e docker_username=${{github.actor}}
             -e docker_password=${{github.token}}
             -e server_access_token=${{secrets.SERVER_ACCESS_TOKEN}}

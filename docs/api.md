@@ -152,6 +152,7 @@ POST /optimization_data
 
 | Parameter   | Description    | Unit       | Default |
 |-------------|----------------|------------|:-------:|
+| timestamp   | Unix timestamp | seconds    |   0     |
 | people_in_the_room    | Whether there is someone in the room or not       | boolean    |  false  |
 | windows_are_opened         | Are windows in room opened or not            | boolean    |  false  |
 
@@ -160,6 +161,7 @@ POST /optimization_data
 ```json
 HTTP/1.1 201 Created
 {
+  "timestamp": 1589898775,
   "people_in_the_room": false,
   "windows_are_opened": true
 }
@@ -180,6 +182,7 @@ GET /optimization_data
 ```json
 HTTP/1.1 200 OK
 {
+  "timestamp": 1589898775,
   "people_in_the_room": false,
   "windows_are_opened": true
 }

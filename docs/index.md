@@ -3,7 +3,7 @@
 Start database and server:
 
 ```sh
-docker-compose up
+docker-compose up --build
 ```
 
 Check server status:

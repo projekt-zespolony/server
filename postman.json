@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f6e973d6-c053-4ba1-a7ff-00fc675bb9f8",
+		"_postman_id": "c5e80128-cdfb-4aa5-92c4-dc9f0da0bbe4",
 		"name": "server",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "67ce79e9-8789-4bfe-8caa-7e118fbc868e",
+						"id": "28256036-c811-4876-929e-e3e02ab3bb2d",
 						"exec": [
 							"pm.test(\"Response HTTP status is correct\", function () {",
 							"    pm.response.to.have.status(201);",
@@ -119,7 +119,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "855bc12d-6de2-499f-9936-4f50b11b6fd7",
+						"id": "360e98dc-0449-41ec-be49-e02834c246a8",
 						"exec": [
 							"pm.test(\"Response HTTP status is correct\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -203,7 +203,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a918bddd-06ad-445b-a46d-7346f5284744",
+						"id": "45300fb0-7d76-4b2a-92ae-a333c709e700",
 						"exec": [
 							"pm.test(\"Response HTTP status is correct\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -280,7 +280,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "cb2c51ea-46af-4ba6-a0d0-5f61845e913e",
+						"id": "dad8a7a6-da2c-47fe-a96b-8816223c2ae0",
 						"exec": [
 							"pm.test(\"Response HTTP status is correct\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -360,7 +360,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "9a7e7645-cb52-47c1-bdaa-92bbd191e30c",
+						"id": "c59efda4-9ff7-446e-85e4-ed8a9c69f221",
 						"exec": [
 							"pm.test(\"Response HTTP status is correct\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -406,43 +406,6 @@
 			},
 			"response": [
 				{
-					"name": "sensors/:hours",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/sensors/0",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"sensors",
-								"0"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "JSON",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json; charset=UTF-8"
-						},
-						{
-							"key": "Date",
-							"value": "Fri, 17 Apr 2020 09:29:12 GMT"
-						},
-						{
-							"key": "Content-Length",
-							"value": "3"
-						}
-					],
-					"cookie": [],
-					"body": "[]\n"
-				},
-				{
 					"name": "sensors/24",
 					"originalRequest": {
 						"method": "GET",
@@ -478,6 +441,43 @@
 					],
 					"cookie": [],
 					"body": "[{\"timestamp\":1587050485,\"temperature\":15,\"pressure\":1029,\"humidity\":50.5,\"gas\":15.5},{\"timestamp\":1587050485,\"temperature\":14,\"pressure\":1030,\"humidity\":42,\"gas\":3},{\"timestamp\":1587050485,\"temperature\":16,\"pressure\":1037.5,\"humidity\":52.5,\"gas\":18},{\"timestamp\":1587050486,\"temperature\":12.5,\"pressure\":1011,\"humidity\":49.5,\"gas\":17.5},{\"timestamp\":1587050486,\"temperature\":15.5,\"pressure\":1025.5,\"humidity\":40.5,\"gas\":12},{\"timestamp\":1587050486,\"temperature\":18.5,\"pressure\":995,\"humidity\":60,\"gas\":5},{\"timestamp\":1587050486,\"temperature\":11,\"pressure\":1008.5,\"humidity\":46,\"gas\":1.5},{\"timestamp\":1587050486,\"temperature\":19.5,\"pressure\":1046.5,\"humidity\":43.5,\"gas\":8.5},{\"timestamp\":1587050486,\"temperature\":18.5,\"pressure\":1039,\"humidity\":54,\"gas\":3.5},{\"timestamp\":1587050486,\"temperature\":19.5,\"pressure\":1008.5,\"humidity\":55.5,\"gas\":8.5},{\"timestamp\":1587050486,\"temperature\":14,\"pressure\":1043.5,\"humidity\":49.5,\"gas\":19},{\"timestamp\":1587050486,\"temperature\":19,\"pressure\":1013.5,\"humidity\":52,\"gas\":19.5},{\"timestamp\":1587050486,\"temperature\":17,\"pressure\":1006,\"humidity\":48,\"gas\":18.5},{\"timestamp\":1587050486,\"temperature\":14,\"pressure\":1035,\"humidity\":41.5,\"gas\":0.5},{\"timestamp\":1587050486,\"temperature\":12.5,\"pressure\":1025,\"humidity\":59.5,\"gas\":1},{\"timestamp\":1587050486,\"temperature\":17,\"pressure\":1004,\"humidity\":41.5,\"gas\":15.5},{\"timestamp\":1587050486,\"temperature\":13.5,\"pressure\":1018,\"humidity\":53,\"gas\":9},{\"timestamp\":1587050486,\"temperature\":17.5,\"pressure\":997.5,\"humidity\":50,\"gas\":10.5},{\"timestamp\":1587050486,\"temperature\":13.5,\"pressure\":1046.5,\"humidity\":48,\"gas\":3.5},{\"timestamp\":1587050486,\"temperature\":11,\"pressure\":1024.5,\"humidity\":46,\"gas\":18},{\"timestamp\":1587050486,\"temperature\":19.5,\"pressure\":1009,\"humidity\":55.5,\"gas\":6.5},{\"timestamp\":1587050486,\"temperature\":16,\"pressure\":1019.5,\"humidity\":52,\"gas\":0.5},{\"timestamp\":1587050487,\"temperature\":17,\"pressure\":1002.5,\"humidity\":57,\"gas\":18},{\"timestamp\":1587050487,\"temperature\":10,\"pressure\":1031.5,\"humidity\":41.5,\"gas\":7.5},{\"timestamp\":1587050487,\"temperature\":20,\"pressure\":994,\"humidity\":52.5,\"gas\":0},{\"timestamp\":1587050487,\"temperature\":13.5,\"pressure\":1014,\"humidity\":42,\"gas\":18.5},{\"timestamp\":1587050487,\"temperature\":18.5,\"pressure\":1026.5,\"humidity\":40.5,\"gas\":4.5},{\"timestamp\":1587050487,\"temperature\":20,\"pressure\":1043.5,\"humidity\":59,\"gas\":8},{\"timestamp\":1587050487,\"temperature\":20,\"pressure\":1000.5,\"humidity\":45.5,\"gas\":14.5},{\"timestamp\":1587050487,\"temperature\":15,\"pressure\":1038.5,\"humidity\":57.5,\"gas\":6.5},{\"timestamp\":1587050487,\"temperature\":17.5,\"pressure\":1036,\"humidity\":48,\"gas\":11.5},{\"timestamp\":1587050487,\"temperature\":16,\"pressure\":1037,\"humidity\":44,\"gas\":15},{\"timestamp\":1587050487,\"temperature\":18,\"pressure\":1041.5,\"humidity\":51.5,\"gas\":17},{\"timestamp\":1587050487,\"temperature\":17.5,\"pressure\":1039.5,\"humidity\":55.5,\"gas\":17},{\"timestamp\":1587050487,\"temperature\":18.5,\"pressure\":1000,\"humidity\":57,\"gas\":14},{\"timestamp\":1587050487,\"temperature\":13.5,\"pressure\":1019.5,\"humidity\":51,\"gas\":14},{\"timestamp\":1587050487,\"temperature\":20,\"pressure\":994.5,\"humidity\":55,\"gas\":2},{\"timestamp\":1587050487,\"temperature\":12,\"pressure\":1016,\"humidity\":51,\"gas\":18},{\"timestamp\":1587050487,\"temperature\":15,\"pressure\":1029.5,\"humidity\":60,\"gas\":8},{\"timestamp\":1587050487,\"temperature\":17,\"pressure\":1004,\"humidity\":59.5,\"gas\":2},{\"timestamp\":1587050487,\"temperature\":17.5,\"pressure\":1041.5,\"humidity\":41,\"gas\":8},{\"timestamp\":1587050488,\"temperature\":13.5,\"pressure\":1039.5,\"humidity\":47,\"gas\":7.5},{\"timestamp\":1587050488,\"temperature\":18.5,\"pressure\":1003,\"humidity\":44.5,\"gas\":16.5},{\"timestamp\":1587050488,\"temperature\":10,\"pressure\":1048,\"humidity\":46.5,\"gas\":1.5},{\"timestamp\":1587050488,\"temperature\":10,\"pressure\":1041.5,\"humidity\":45,\"gas\":18},{\"timestamp\":1587050488,\"temperature\":14,\"pressure\":1011.5,\"humidity\":44,\"gas\":10},{\"timestamp\":1587050488,\"temperature\":17,\"pressure\":1040,\"humidity\":45,\"gas\":4},{\"timestamp\":1587050488,\"temperature\":11,\"pressure\":1001,\"humidity\":46,\"gas\":8.5},{\"timestamp\":1587050488,\"temperature\":16,\"pressure\":1035.5,\"humidity\":52.5,\"gas\":14},{\"timestamp\":1587050488,\"temperature\":10.5,\"pressure\":997.5,\"humidity\":42,\"gas\":20},{\"timestamp\":1587050488,\"temperature\":14.5,\"pressure\":1009.5,\"humidity\":55.5,\"gas\":4.5},{\"timestamp\":1587050488,\"temperature\":18,\"pressure\":1017,\"humidity\":47.5,\"gas\":20},{\"timestamp\":1587050488,\"temperature\":10,\"pressure\":997.5,\"humidity\":59,\"gas\":13.5},{\"timestamp\":1587050488,\"temperature\":16,\"pressure\":1010,\"humidity\":50.5,\"gas\":10},{\"timestamp\":1587050488,\"temperature\":11,\"pressure\":995.5,\"humidity\":54.5,\"gas\":12},{\"timestamp\":1587050488,\"temperature\":19.5,\"pressure\":1001,\"humidity\":43,\"gas\":5},{\"timestamp\":1587050488,\"temperature\":12,\"pressure\":1037.5,\"humidity\":46.5,\"gas\":20},{\"timestamp\":1587050488,\"temperature\":15.5,\"pressure\":1015.5,\"humidity\":60,\"gas\":8.5},{\"timestamp\":1587050488,\"temperature\":18.5,\"pressure\":1033,\"humidity\":57.5,\"gas\":8.5},{\"timestamp\":1587050489,\"temperature\":16.5,\"pressure\":1004,\"humidity\":46,\"gas\":20},{\"timestamp\":1587050489,\"temperature\":14,\"pressure\":1038.5,\"humidity\":57.5,\"gas\":2},{\"timestamp\":1587050489,\"temperature\":13,\"pressure\":1004,\"humidity\":48.5,\"gas\":4.5},{\"timestamp\":1587050489,\"temperature\":20,\"pressure\":1034,\"humidity\":48.5,\"gas\":9},{\"timestamp\":1587050489,\"temperature\":20,\"pressure\":1016,\"humidity\":46.5,\"gas\":0.5},{\"timestamp\":1587050489,\"temperature\":14.5,\"pressure\":1010,\"humidity\":50,\"gas\":13},{\"timestamp\":1587050489,\"temperature\":19.5,\"pressure\":1000,\"humidity\":42.5,\"gas\":6},{\"timestamp\":1587050489,\"temperature\":13,\"pressure\":1029,\"humidity\":45.5,\"gas\":17.5},{\"timestamp\":1587050489,\"temperature\":15.5,\"pressure\":1031.5,\"humidity\":40,\"gas\":20},{\"timestamp\":1587050489,\"temperature\":20,\"pressure\":1004.5,\"humidity\":42.5,\"gas\":19},{\"timestamp\":1587050489,\"temperature\":11,\"pressure\":1001.5,\"humidity\":47.5,\"gas\":14.5},{\"timestamp\":1587050489,\"temperature\":10.5,\"pressure\":1003.5,\"humidity\":48.5,\"gas\":15},{\"timestamp\":1587050489,\"temperature\":14,\"pressure\":1026.5,\"humidity\":49.5,\"gas\":0.5},{\"timestamp\":1587050489,\"temperature\":13,\"pressure\":1011.5,\"humidity\":49.5,\"gas\":15.5},{\"timestamp\":1587050489,\"temperature\":16,\"pressure\":1035,\"humidity\":56,\"gas\":5.5},{\"timestamp\":1587050489,\"temperature\":14,\"pressure\":1031,\"humidity\":55.5,\"gas\":4.5},{\"timestamp\":1587050489,\"temperature\":18.5,\"pressure\":1012,\"humidity\":43,\"gas\":1},{\"timestamp\":1587050489,\"temperature\":15,\"pressure\":1042,\"humidity\":51,\"gas\":14},{\"timestamp\":1587050489,\"temperature\":12.5,\"pressure\":1030,\"humidity\":49,\"gas\":15.5},{\"timestamp\":1587050490,\"temperature\":18.5,\"pressure\":1002,\"humidity\":45,\"gas\":15},{\"timestamp\":1587050490,\"temperature\":11.5,\"pressure\":1008.5,\"humidity\":40,\"gas\":10.5},{\"timestamp\":1587050490,\"temperature\":19.5,\"pressure\":996.5,\"humidity\":46.5,\"gas\":14},{\"timestamp\":1587050490,\"temperature\":14.5,\"pressure\":1034,\"humidity\":54,\"gas\":8},{\"timestamp\":1587050490,\"temperature\":17.5,\"pressure\":1045,\"humidity\":59.5,\"gas\":9},{\"timestamp\":1587050490,\"temperature\":12,\"pressure\":1005.5,\"humidity\":48.5,\"gas\":3},{\"timestamp\":1587050490,\"temperature\":19.5,\"pressure\":1032,\"humidity\":43,\"gas\":9.5},{\"timestamp\":1587050490,\"temperature\":15.5,\"pressure\":1012,\"humidity\":47.5,\"gas\":15},{\"timestamp\":1587050490,\"temperature\":18.5,\"pressure\":998,\"humidity\":49,\"gas\":17},{\"timestamp\":1587050490,\"temperature\":19.5,\"pressure\":1016.5,\"humidity\":40,\"gas\":4},{\"timestamp\":1587050490,\"temperature\":15,\"pressure\":1022,\"humidity\":59,\"gas\":9},{\"timestamp\":1587050490,\"temperature\":11.5,\"pressure\":1031.5,\"humidity\":47.5,\"gas\":16.5},{\"timestamp\":1587050490,\"temperature\":18,\"pressure\":1022,\"humidity\":44,\"gas\":19},{\"timestamp\":1587050490,\"temperature\":13,\"pressure\":1032.5,\"humidity\":42,\"gas\":13.5},{\"timestamp\":1587050490,\"temperature\":15,\"pressure\":1041,\"humidity\":40.5,\"gas\":0},{\"timestamp\":1587050490,\"temperature\":13,\"pressure\":1009,\"humidity\":52,\"gas\":14},{\"timestamp\":1587050490,\"temperature\":17,\"pressure\":1002.5,\"humidity\":52,\"gas\":0.5},{\"timestamp\":1587050490,\"temperature\":10,\"pressure\":1018,\"humidity\":46.5,\"gas\":13.5},{\"timestamp\":1587050491,\"temperature\":13,\"pressure\":1035,\"humidity\":41,\"gas\":9.5},{\"timestamp\":1587050491,\"temperature\":10,\"pressure\":1007.5,\"humidity\":53,\"gas\":20},{\"timestamp\":1587050491,\"temperature\":12.5,\"pressure\":995,\"humidity\":40,\"gas\":16.5},{\"timestamp\":1587050491,\"temperature\":17,\"pressure\":1037,\"humidity\":47,\"gas\":9.5},{\"timestamp\":1587050551,\"temperature\":15,\"pressure\":1036.5,\"humidity\":48.5,\"gas\":7},{\"timestamp\":1587050551,\"temperature\":18,\"pressure\":1046,\"humidity\":59,\"gas\":2},{\"timestamp\":1587050551,\"temperature\":16,\"pressure\":1031,\"humidity\":43,\"gas\":12},{\"timestamp\":1587050551,\"temperature\":15.5,\"pressure\":1033.5,\"humidity\":40,\"gas\":18.5},{\"timestamp\":1587050551,\"temperature\":11,\"pressure\":992.5,\"humidity\":52.5,\"gas\":1},{\"timestamp\":1587050552,\"temperature\":16.5,\"pressure\":994,\"humidity\":42,\"gas\":17.5},{\"timestamp\":1587050552,\"temperature\":19.5,\"pressure\":1019.5,\"humidity\":44.5,\"gas\":20},{\"timestamp\":1587050552,\"temperature\":11.5,\"pressure\":1019.5,\"humidity\":50,\"gas\":16},{\"timestamp\":1587050552,\"temperature\":17.5,\"pressure\":1007.5,\"humidity\":59.5,\"gas\":19.5},{\"timestamp\":1587050552,\"temperature\":14,\"pressure\":1024.5,\"humidity\":52.5,\"gas\":17.5},{\"timestamp\":1587050552,\"temperature\":11,\"pressure\":1042.5,\"humidity\":55.5,\"gas\":8},{\"timestamp\":1587050552,\"temperature\":13,\"pressure\":1016,\"humidity\":58,\"gas\":0.5},{\"timestamp\":1587050552,\"temperature\":11,\"pressure\":1025.5,\"humidity\":54,\"gas\":2.5},{\"timestamp\":1587050552,\"temperature\":11.5,\"pressure\":998.5,\"humidity\":55.5,\"gas\":15},{\"timestamp\":1587050552,\"temperature\":15,\"pressure\":1049,\"humidity\":46,\"gas\":9},{\"timestamp\":1587050552,\"temperature\":19.5,\"pressure\":1048,\"humidity\":59,\"gas\":3},{\"timestamp\":1587050552,\"temperature\":15,\"pressure\":995.5,\"humidity\":51,\"gas\":14.5},{\"timestamp\":1587050552,\"temperature\":15,\"pressure\":991.5,\"humidity\":55.5,\"gas\":14},{\"timestamp\":1587050552,\"temperature\":16,\"pressure\":1035.5,\"humidity\":49.5,\"gas\":3},{\"timestamp\":1587050552,\"temperature\":16.5,\"pressure\":996,\"humidity\":52.5,\"gas\":10.5},{\"timestamp\":1587050552,\"temperature\":18,\"pressure\":1026,\"humidity\":53,\"gas\":10.5},{\"timestamp\":1587050552,\"temperature\":14,\"pressure\":1011.5,\"humidity\":47.5,\"gas\":9.5},{\"timestamp\":1587050552,\"temperature\":12,\"pressure\":1030.5,\"humidity\":52,\"gas\":4},{\"timestamp\":1587050552,\"temperature\":10,\"pressure\":1001,\"humidity\":57,\"gas\":11.5},{\"timestamp\":1587050552,\"temperature\":11.5,\"pressure\":1005.5,\"humidity\":48.5,\"gas\":6.5},{\"timestamp\":1587050553,\"temperature\":16,\"pressure\":990.5,\"humidity\":57.5,\"gas\":16},{\"timestamp\":1587050553,\"temperature\":17,\"pressure\":1013.5,\"humidity\":59.5,\"gas\":5},{\"timestamp\":1587050553,\"temperature\":16.5,\"pressure\":1028.5,\"humidity\":41,\"gas\":14.5},{\"timestamp\":1587050553,\"temperature\":12,\"pressure\":1047.5,\"humidity\":53,\"gas\":12},{\"timestamp\":1587050553,\"temperature\":19.5,\"pressure\":1001,\"humidity\":56,\"gas\":1.5},{\"timestamp\":1587050553,\"temperature\":13,\"pressure\":1034,\"humidity\":59,\"gas\":16.5},{\"timestamp\":1587050553,\"temperature\":13.5,\"pressure\":1019.5,\"humidity\":53,\"gas\":11},{\"timestamp\":1587050553,\"temperature\":15,\"pressure\":1018.5,\"humidity\":46,\"gas\":10},{\"timestamp\":1587050553,\"temperature\":17.5,\"pressure\":1042,\"humidity\":42.5,\"gas\":14},{\"timestamp\":1587050553,\"temperature\":15.5,\"pressure\":1038.5,\"humidity\":43,\"gas\":15},{\"timestamp\":1587050553,\"temperature\":17,\"pressure\":996.5,\"humidity\":48.5,\"gas\":4},{\"timestamp\":1587050553,\"temperature\":16.5,\"pressure\":1023.5,\"humidity\":46,\"gas\":4},{\"timestamp\":1587050553,\"temperature\":10.5,\"pressure\":1018,\"humidity\":53.5,\"gas\":1.5},{\"timestamp\":1587050553,\"temperature\":14,\"pressure\":1013,\"humidity\":40,\"gas\":9.5},{\"timestamp\":1587050553,\"temperature\":13.5,\"pressure\":1014.5,\"humidity\":51.5,\"gas\":2.5},{\"timestamp\":1587050553,\"temperature\":14,\"pressure\":1038.5,\"humidity\":56.5,\"gas\":14},{\"timestamp\":1587050553,\"temperature\":14.5,\"pressure\":1018.5,\"humidity\":46,\"gas\":17},{\"timestamp\":1587050553,\"temperature\":16,\"pressure\":1033,\"humidity\":53.5,\"gas\":4},{\"timestamp\":1587050553,\"temperature\":17.5,\"pressure\":1025.5,\"humidity\":50.5,\"gas\":17},{\"timestamp\":1587050554,\"temperature\":19,\"pressure\":995,\"humidity\":51.5,\"gas\":18},{\"timestamp\":1587050554,\"temperature\":14,\"pressure\":1018.5,\"humidity\":43.5,\"gas\":12.5},{\"timestamp\":1587050554,\"temperature\":16,\"pressure\":1040,\"humidity\":45,\"gas\":3},{\"timestamp\":1587050554,\"temperature\":17.5,\"pressure\":1024,\"humidity\":54.5,\"gas\":4.5},{\"timestamp\":1587050554,\"temperature\":12.5,\"pressure\":996,\"humidity\":55,\"gas\":14.5},{\"timestamp\":1587050554,\"temperature\":13.5,\"pressure\":1006,\"humidity\":40,\"gas\":2},{\"timestamp\":1587050554,\"temperature\":11.5,\"pressure\":1017,\"humidity\":45,\"gas\":11.5},{\"timestamp\":1587050554,\"temperature\":14.5,\"pressure\":1022.5,\"humidity\":42,\"gas\":16.5},{\"timestamp\":1587050554,\"temperature\":19.5,\"pressure\":1013,\"humidity\":50.5,\"gas\":18},{\"timestamp\":1587050554,\"temperature\":10.5,\"pressure\":993.5,\"humidity\":49.5,\"gas\":16.5},{\"timestamp\":1587050554,\"temperature\":13.5,\"pressure\":997.5,\"humidity\":41.5,\"gas\":1.5},{\"timestamp\":1587050554,\"temperature\":15,\"pressure\":1046.5,\"humidity\":40,\"gas\":16.5},{\"timestamp\":1587050554,\"temperature\":18.5,\"pressure\":1023.5,\"humidity\":42,\"gas\":13.5},{\"timestamp\":1587050554,\"temperature\":10,\"pressure\":1027.5,\"humidity\":43,\"gas\":14},{\"timestamp\":1587050554,\"temperature\":15,\"pressure\":1004.5,\"humidity\":49,\"gas\":17.5},{\"timestamp\":1587050554,\"temperature\":19,\"pressure\":1044.5,\"humidity\":49,\"gas\":16},{\"timestamp\":1587050554,\"temperature\":17.5,\"pressure\":1020,\"humidity\":46,\"gas\":1},{\"timestamp\":1587050554,\"temperature\":10.5,\"pressure\":1020,\"humidity\":44,\"gas\":16},{\"timestamp\":1587050555,\"temperature\":16,\"pressure\":1049.5,\"humidity\":41,\"gas\":7.5},{\"timestamp\":1587050555,\"temperature\":12,\"pressure\":1019,\"humidity\":57,\"gas\":2},{\"timestamp\":1587050555,\"temperature\":11.5,\"pressure\":1041,\"humidity\":51.5,\"gas\":10},{\"timestamp\":1587050555,\"temperature\":11,\"pressure\":1035.5,\"humidity\":54.5,\"gas\":13},{\"timestamp\":1587050555,\"temperature\":11.5,\"pressure\":1009.5,\"humidity\":53,\"gas\":10.5},{\"timestamp\":1587050555,\"temperature\":12,\"pressure\":1033.5,\"humidity\":47.5,\"gas\":15.5},{\"timestamp\":1587050555,\"temperature\":16,\"pressure\":1037.5,\"humidity\":48.5,\"gas\":10.5},{\"timestamp\":1587050555,\"temperature\":13.5,\"pressure\":1047,\"humidity\":50.5,\"gas\":10},{\"timestamp\":1587050555,\"temperature\":14,\"pressure\":1034,\"humidity\":49,\"gas\":5.5},{\"timestamp\":1587050555,\"temperature\":19,\"pressure\":1018,\"humidity\":51.5,\"gas\":5},{\"timestamp\":1587050555,\"temperature\":17,\"pressure\":1019,\"humidity\":42.5,\"gas\":16},{\"timestamp\":1587050555,\"temperature\":16,\"pressure\":1022,\"humidity\":57,\"gas\":1},{\"timestamp\":1587050555,\"temperature\":13,\"pressure\":1040,\"humidity\":42,\"gas\":3},{\"timestamp\":1587050555,\"temperature\":12.5,\"pressure\":1031.5,\"humidity\":52,\"gas\":12},{\"timestamp\":1587050555,\"temperature\":14,\"pressure\":1006,\"humidity\":47.5,\"gas\":3},{\"timestamp\":1587050555,\"temperature\":19,\"pressure\":1000.5,\"humidity\":41.5,\"gas\":15.5},{\"timestamp\":1587050555,\"temperature\":10,\"pressure\":1027.5,\"humidity\":48,\"gas\":10.5},{\"timestamp\":1587050555,\"temperature\":12,\"pressure\":1049.5,\"humidity\":47,\"gas\":3},{\"timestamp\":1587050555,\"temperature\":12,\"pressure\":996,\"humidity\":45,\"gas\":4.5},{\"timestamp\":1587050555,\"temperature\":12,\"pressure\":1042,\"humidity\":51,\"gas\":14},{\"timestamp\":1587050556,\"temperature\":10.5,\"pressure\":1043.5,\"humidity\":60,\"gas\":15},{\"timestamp\":1587050556,\"temperature\":13.5,\"pressure\":1019,\"humidity\":54,\"gas\":5.5},{\"timestamp\":1587050556,\"temperature\":15,\"pressure\":1004,\"humidity\":45,\"gas\":12.5},{\"timestamp\":1587050556,\"temperature\":18,\"pressure\":1000.5,\"humidity\":58.5,\"gas\":15},{\"timestamp\":1587050556,\"temperature\":11.5,\"pressure\":996.5,\"humidity\":47.5,\"gas\":10},{\"timestamp\":1587050556,\"temperature\":18.5,\"pressure\":1017,\"humidity\":54.5,\"gas\":2},{\"timestamp\":1587050556,\"temperature\":12.5,\"pressure\":1006.5,\"humidity\":60,\"gas\":7},{\"timestamp\":1587050556,\"temperature\":14,\"pressure\":1018.5,\"humidity\":44.5,\"gas\":5},{\"timestamp\":1587050556,\"temperature\":12.5,\"pressure\":1033.5,\"humidity\":43,\"gas\":16.5},{\"timestamp\":1587050556,\"temperature\":14.5,\"pressure\":1050,\"humidity\":47.5,\"gas\":13},{\"timestamp\":1587050556,\"temperature\":17,\"pressure\":1044.5,\"humidity\":42.5,\"gas\":16.5},{\"timestamp\":1587050556,\"temperature\":20,\"pressure\":1037.5,\"humidity\":40.5,\"gas\":4},{\"timestamp\":1587050556,\"temperature\":16,\"pressure\":993,\"humidity\":53.5,\"gas\":20},{\"timestamp\":1587050556,\"temperature\":17.5,\"pressure\":1013,\"humidity\":42.5,\"gas\":10},{\"timestamp\":1587050556,\"temperature\":11.5,\"pressure\":1042,\"humidity\":60,\"gas\":4.5},{\"timestamp\":1587050556,\"temperature\":18,\"pressure\":1045.5,\"humidity\":40.5,\"gas\":6.5},{\"timestamp\":1587050556,\"temperature\":10,\"pressure\":1022,\"humidity\":51.5,\"gas\":13.5},{\"timestamp\":1587050556,\"temperature\":16,\"pressure\":1039,\"humidity\":50.5,\"gas\":16.5}]\n"
+				},
+				{
+					"name": "sensors/:hours",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/sensors/0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sensors",
+								"0"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 17 Apr 2020 09:29:12 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3"
+						}
+					],
+					"cookie": [],
+					"body": "[]\n"
 				}
 			]
 		},
@@ -487,13 +487,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "26913eb9-8a32-4509-921a-fded58c31a3d",
+						"id": "e72af2f7-e580-4e86-9d2c-1899896f3081",
 						"exec": [
 							"pm.test(\"Response HTTP status is correct\", function () {",
 							"    pm.response.to.have.status(201);",
 							"});",
 							"",
-							"pm.test(\"Response body is present and is a JSON object\", function() {",
+							"pm.test(\"Response body is present and is a JSON object\", function () {",
 							"    pm.response.to.be.json;",
 							"    pm.response.to.be.withBody;",
 							"});",
@@ -519,7 +519,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"people_in_the_room\": false,\n    \"windows_are_opened\": true\n}",
+					"raw": "{\n\t\"timestamp\": {{$timestamp}},\n    \"people_in_the_room\": false,\n    \"windows_are_opened\": true\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -597,19 +597,21 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "c28efe56-98a8-49f8-b137-b33644025a8e",
+						"id": "0ba14aa8-ba19-47cb-beca-7a6b6f01c162",
 						"exec": [
 							"pm.test(\"Response HTTP status is correct\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
-							"pm.test(\"Response body is present and is a JSON object\", function() {",
+							"pm.test(\"Response body is present and is a JSON object\", function () {",
 							"    pm.response.to.be.json;",
 							"    pm.response.to.be.withBody;",
 							"});",
 							"",
 							"pm.test(\"Response body JSON is correct\", function () {",
+							"    const timestamp = Math.round(Date.now() / 1000);",
 							"    const res = pm.response.json();",
+							"    pm.expect(res.timestamp).to.be.at.most(timestamp);",
 							"    pm.expect(res.people_in_the_room).to.be.equal(false);",
 							"    pm.expect(res.windows_are_opened).to.be.equal(true);",
 							"});"
@@ -676,7 +678,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "f74340c0-b4de-4307-b2c1-c23fd5645e95",
+				"id": "3c57628c-3701-4ed8-a629-0e55a17da747",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -686,7 +688,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "1224dd6b-28cb-42b0-bfbe-b1ec966591da",
+				"id": "dcf57248-4fd3-46f8-9f2e-4fb9ce9d01cc",
 				"type": "text/javascript",
 				"exec": [
 					""

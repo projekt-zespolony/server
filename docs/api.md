@@ -131,6 +131,60 @@ HTTP/1.1 201 Created
 
 ```
 
+## Create new optimization data
+
+Create a new entry in the database with given optimization data.
+
+**Endpoint**:
+
+```http
+POST /optimization_data
+```
+
+**Headers**:
+
+| Name           | Value             |
+|----------------|-------------------|
+| Content-Type   | application/json  |
+| Authentication | Bearer **$TOKEN** |
+
+**Data**:
+
+| Parameter   | Description    | Unit       | Default |
+|-------------|----------------|------------|:-------:|
+| people_in_the_room    | Whether there is someone in the room or not       | boolean    |  false  |
+| windows_are_opened         | Are windows in room opened or not            | boolean    |  false  |
+
+**Response**:
+
+```json
+HTTP/1.1 201 Created
+{
+  "people_in_the_room": false,
+  "windows_are_opened": true
+}
+```
+
+## Get latest optimization data
+
+Returns newest optimization data found in the database.
+
+**Endpoint**:
+
+```http
+GET /optimization_data
+```
+
+**Response**:
+
+```json
+HTTP/1.1 200 OK
+{
+  "people_in_the_room": false,
+  "windows_are_opened": true
+}
+```
+
 ## Common errors
 
 Missing `Authorization` header:

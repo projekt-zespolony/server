@@ -51,7 +51,9 @@ func Run(routerOptions *Options, dbOptions *database.Options, firebaseOptions *f
 	e.GET("/", router.handleGetStatus)
 	e.GET("/sensors", router.handleGetSensors)
 	e.GET("/sensors/:hours", router.handleGetSensorsHours)
+	e.GET("/optimization_data", router.handleGetOptimizationData)
 	e.POST("/sensors", router.handlePostSensors, middleware.KeyAuth(router.handleAuth))
+	e.POST("/optimization_data", router.handlePostOptimizationData, middleware.KeyAuth(router.handleAuth))
 	e.POST("/firebase", router.handlePostFirebase, middleware.KeyAuth(router.handleAuth))
 
 	return e.Start(":" + routerOptions.ServerPort)
@@ -74,7 +76,7 @@ func (router *Router) handleGetStatus(c echo.Context) error {
 }
 
 func (router *Router) handleGetSensors(c echo.Context) error {
-	sensors, err := router.db.Latest()
+	sensors, err := router.db.LatestSensors()
 	if err != nil {
 		return err
 	}
@@ -90,12 +92,21 @@ func (router *Router) handleGetSensorsHours(c echo.Context) error {
 
 	timestamp := time.Now().UTC().Unix() - hours*60*60
 
-	sensors, err := router.db.Since(timestamp)
+	sensors, err := router.db.SinceSensors(timestamp)
 	if err != nil {
 		return err
 	}
 
 	return c.JSON(http.StatusOK, sensors)
+}
+
+func (router *Router) handleGetOptimizationData(c echo.Context) error {
+	optimizationData, err := router.db.LatestOptimizationData()
+	if err != nil {
+		return err
+	}
+
+	return c.JSON(http.StatusOK, optimizationData)
 }
 
 func (router *Router) handlePostSensors(c echo.Context) error {
@@ -108,12 +119,28 @@ func (router *Router) handlePostSensors(c echo.Context) error {
 		return err
 	}
 
-	err = router.db.Create(sensors)
+	err = router.db.CreateSensors(sensors)
 	if err != nil {
 		return err
 	}
 
 	return c.JSON(http.StatusCreated, sensors)
+}
+
+func (router *Router) handlePostOptimizationData(c echo.Context) error {
+	optimizationData := &types.OptimizationData{}
+
+	err := c.Bind(optimizationData)
+	if err != nil {
+		return err
+	}
+
+	err = router.db.CreateOptimizationData(optimizationData)
+	if err != nil {
+		return err
+	}
+
+	return c.JSON(http.StatusCreated, optimizationData)
 }
 
 func (router *Router) handlePostFirebase(c echo.Context) error {

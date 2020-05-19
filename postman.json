@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1407d149-a248-41c2-b55b-4600d5ebaf50",
+		"_postman_id": "c5e80128-cdfb-4aa5-92c4-dc9f0da0bbe4",
 		"name": "server",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "67ce79e9-8789-4bfe-8caa-7e118fbc868e",
+						"id": "28256036-c811-4876-929e-e3e02ab3bb2d",
 						"exec": [
 							"pm.test(\"Response HTTP status is correct\", function () {",
 							"    pm.response.to.have.status(201);",
@@ -119,7 +119,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "855bc12d-6de2-499f-9936-4f50b11b6fd7",
+						"id": "360e98dc-0449-41ec-be49-e02834c246a8",
 						"exec": [
 							"pm.test(\"Response HTTP status is correct\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -203,7 +203,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a918bddd-06ad-445b-a46d-7346f5284744",
+						"id": "45300fb0-7d76-4b2a-92ae-a333c709e700",
 						"exec": [
 							"pm.test(\"Response HTTP status is correct\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -280,7 +280,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "cb2c51ea-46af-4ba6-a0d0-5f61845e913e",
+						"id": "dad8a7a6-da2c-47fe-a96b-8816223c2ae0",
 						"exec": [
 							"pm.test(\"Response HTTP status is correct\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -360,7 +360,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "9a7e7645-cb52-47c1-bdaa-92bbd191e30c",
+						"id": "c59efda4-9ff7-446e-85e4-ed8a9c69f221",
 						"exec": [
 							"pm.test(\"Response HTTP status is correct\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -480,13 +480,205 @@
 					"body": "[]\n"
 				}
 			]
+		},
+		{
+			"name": "optimization_data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e72af2f7-e580-4e86-9d2c-1899896f3081",
+						"exec": [
+							"pm.test(\"Response HTTP status is correct\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Response body is present and is a JSON object\", function () {",
+							"    pm.response.to.be.json;",
+							"    pm.response.to.be.withBody;",
+							"});",
+							"",
+							"pm.test(\"Request and response body are equal\", function () {",
+							"    const req = JSON.parse(pm.request.body.raw);",
+							"    const res = pm.response.json();",
+							"    pm.expect(req).to.be.deep.equal(res);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer token",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"timestamp\": {{$timestamp}},\n    \"people_in_the_room\": false,\n    \"windows_are_opened\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/optimization_data",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"optimization_data"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "optimization_data",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer token",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"people_in_the_room\": false,\n    \"windows_are_opened\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/optimization_data",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"optimization_data"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 19 May 2020 12:40:24 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "55"
+						}
+					],
+					"cookie": [],
+					"body": "{\"people_in_the_room\":false,\"windows_are_opened\":true}\n"
+				}
+			]
+		},
+		{
+			"name": "optimization_data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0ba14aa8-ba19-47cb-beca-7a6b6f01c162",
+						"exec": [
+							"pm.test(\"Response HTTP status is correct\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response body is present and is a JSON object\", function () {",
+							"    pm.response.to.be.json;",
+							"    pm.response.to.be.withBody;",
+							"});",
+							"",
+							"pm.test(\"Response body JSON is correct\", function () {",
+							"    const timestamp = Math.round(Date.now() / 1000);",
+							"    const res = pm.response.json();",
+							"    pm.expect(res.timestamp).to.be.at.most(timestamp);",
+							"    pm.expect(res.people_in_the_room).to.be.equal(false);",
+							"    pm.expect(res.windows_are_opened).to.be.equal(true);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/optimization_data",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"optimization_data"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "optimization_data",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/optimization_data",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"optimization_data"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 19 May 2020 12:41:26 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "55"
+						}
+					],
+					"cookie": [],
+					"body": "{\"people_in_the_room\":false,\"windows_are_opened\":true}\n"
+				}
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "f74340c0-b4de-4307-b2c1-c23fd5645e95",
+				"id": "3c57628c-3701-4ed8-a629-0e55a17da747",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -496,7 +688,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "1224dd6b-28cb-42b0-bfbe-b1ec966591da",
+				"id": "dcf57248-4fd3-46f8-9f2e-4fb9ce9d01cc",
 				"type": "text/javascript",
 				"exec": [
 					""

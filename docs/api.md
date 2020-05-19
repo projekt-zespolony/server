@@ -152,7 +152,7 @@ POST /optimization_data
 
 | Parameter   | Description    | Unit       | Default |
 |-------------|----------------|------------|:-------:|
-| people_in_the_room    | Wheter the is someone in the room or not       | boolean    |  false  |
+| people_in_the_room    | Whether there is someone in the room or not       | boolean    |  false  |
 | windows_are_opened         | Are windows in room opened or not            | boolean    |  false  |
 
 **Response**:

@@ -617,6 +617,12 @@
 </thead>
 <tbody>
 <tr>
+<td>timestamp</td>
+<td>Unix timestamp</td>
+<td>seconds</td>
+<td align="center">0</td>
+</tr>
+<tr>
 <td>people_in_the_room</td>
 <td>Whether there is someone in the room or not</td>
 <td>boolean</td>
@@ -633,6 +639,7 @@
 <p><strong>Response</strong>:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">HTTP/</span><span class="mf">1.1</span> <span class="mi">201</span> <span class="err">Created</span>
 <span class="p">{</span>
+  <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1589898775</span><span class="p">,</span>
   <span class="nt">&quot;people_in_the_room&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
   <span class="nt">&quot;windows_are_opened&quot;</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
@@ -649,6 +656,7 @@
 <p><strong>Response</strong>:</p>
 <div class="codehilite"><pre><span></span><code><span class="err">HTTP/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="err">OK</span>
 <span class="p">{</span>
+  <span class="nt">&quot;timestamp&quot;</span><span class="p">:</span> <span class="mi">1589898775</span><span class="p">,</span>
   <span class="nt">&quot;people_in_the_room&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
   <span class="nt">&quot;windows_are_opened&quot;</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>

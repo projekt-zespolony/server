@@ -37,11 +37,11 @@ func New(options *Options) (*Database, error) {
 	}, nil
 }
 
-func (database *Database) Create(sensors *types.Sensors) error {
+func (database *Database) CreateSensors(sensors *types.Sensors) error {
 	return database.db.Create(sensors).Error
 }
 
-func (database *Database) Latest() (*types.Sensors, error) {
+func (database *Database) LatestSensors() (*types.Sensors, error) {
 	sensors := &types.Sensors{}
 
 	err := database.db.Last(sensors).Error
@@ -52,7 +52,7 @@ func (database *Database) Latest() (*types.Sensors, error) {
 	return sensors, nil
 }
 
-func (database *Database) Since(timestamp int64) ([]*types.Sensors, error) {
+func (database *Database) SinceSensors(timestamp int64) ([]*types.Sensors, error) {
 	sensors := []*types.Sensors{}
 
 	err := database.db.Where("timestamp > ?", timestamp).Find(&sensors).Error
@@ -61,4 +61,19 @@ func (database *Database) Since(timestamp int64) ([]*types.Sensors, error) {
 	}
 
 	return sensors, nil
+}
+
+func (database *Database) CreateOptimizationData(opt *types.OptimizationData) error {
+	return database.db.Create(opt).Error
+}
+
+func (database *Database) LatestOptimizationData() (*types.OptimizationData, error) {
+	opt := &types.OptimizationData{}
+
+	err := database.db.Last(opt).Error
+	if err != nil {
+		return nil, err
+	}
+
+	return opt, nil
 }

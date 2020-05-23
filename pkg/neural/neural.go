@@ -49,8 +49,9 @@ func Predict(sensors *types.Sensors) (*types.OptimizationData, error) {
 	output := result[0].Value().([][]float32)[0]
 
 	opt := &types.OptimizationData{
-		PeopleInTheRoom:  output[0] > treshold,
-		WindowsAreOpened: output[1] > treshold,
+		Timestamp:        sensors.Timestamp,
+		WindowsAreOpened: output[0] > treshold,
+		PeopleInTheRoom:  output[1] > treshold,
 	}
 
 	return opt, nil

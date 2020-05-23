@@ -1,4 +1,4 @@
-FROM golang:1.14-alpine AS builder
+FROM golang:1.14 AS builder
 ARG COMMIT
 ARG VERSION
 ENV LIBRARY_PATH="/app/libtensorflow/lib"

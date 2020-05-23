@@ -17,7 +17,7 @@ FROM ubuntu:18.04
 ENV LIBRARY_PATH="/libtensorflow/lib"
 ENV LD_LIBRARY_PATH="/libtensorflow/lib"
 WORKDIR /
-COPY --from=builder /model /model
 COPY --from=builder /libtensorflow /libtensorflow
+COPY --from=builder /neural/model /model
 COPY --from=builder /app/server /server
 ENTRYPOINT ["/server"]

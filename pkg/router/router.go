@@ -9,6 +9,7 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/projekt-zespolony/server/pkg/database"
 	"github.com/projekt-zespolony/server/pkg/firebase"
+	"github.com/projekt-zespolony/server/pkg/neural"
 	"github.com/projekt-zespolony/server/pkg/types"
 )
 
@@ -120,6 +121,16 @@ func (router *Router) handlePostSensors(c echo.Context) error {
 	}
 
 	err = router.db.CreateSensors(sensors)
+	if err != nil {
+		return err
+	}
+
+	opt, err := neural.Predict(sensors)
+	if err != nil {
+		return err
+	}
+
+	err = router.db.CreateOptimizationData(opt)
 	if err != nil {
 		return err
 	}

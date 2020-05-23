@@ -7,7 +7,9 @@ ENV CGO_CFLAGS="-I/app/libtensorflow/include -L/app/libtensorflow/lib"
 COPY . /app
 WORKDIR /app
 RUN mkdir /app/libtensorflow
-RUN curl https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-1.15.0.tar.gz | tar -C libtensorflow -xz
+ADD https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-1.15.0.tar.gz libtensorflow.tar.gz
+RUN tar -C libtensorflow -xzf libtensorflow.tar.gz
+RUN rm libtensorflow.tar.gz
 RUN go build -ldflags "-X main.version=${VERSION} -X main.commit=${COMMIT}"
 
 FROM alpine:3

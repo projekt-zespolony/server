@@ -52,6 +52,17 @@ func (database *Database) LatestSensors() (*types.Sensors, error) {
 	return sensors, nil
 }
 
+func (database *Database) LatestNSensors(n int) ([]*types.Sensors, error) {
+	sensors := []*types.Sensors{}
+
+	err := database.db.Order("id DESC").Limit(n).Find(&sensors).Error
+	if err != nil {
+		return nil, err
+	}
+
+	return sensors, nil
+}
+
 func (database *Database) SinceSensors(timestamp int64) ([]*types.Sensors, error) {
 	sensors := []*types.Sensors{}
 

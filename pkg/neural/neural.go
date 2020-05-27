@@ -1,6 +1,8 @@
 package neural
 
 import (
+	"math"
+
 	"github.com/projekt-zespolony/server/pkg/types"
 	tf "github.com/tensorflow/tensorflow/tensorflow/go"
 )
@@ -13,6 +15,37 @@ const (
 	outputLayer = "output/Sigmoid"
 )
 
+func Normalize(sensors *types.Sensors) [5]float32 {
+	data := [5]float32{
+		float32(sensors.Timestamp),
+		sensors.Temperature,
+		sensors.Pressure,
+		sensors.Humidity,
+		sensors.Gas,
+	}
+	dataLength := float32(len(data))
+
+	sum := float32(0)
+	for _, d := range data {
+		sum += d
+	}
+	mean := sum / dataLength
+
+	sumSquare := float32(0)
+	for _, d := range data {
+		sumSquare += (d - mean) * (d - mean)
+	}
+	variance := sumSquare / (dataLength - 1)
+
+	stdev := float32(math.Sqrt(float64(variance)))
+
+	for i := range data {
+		data[i] = (data[i] - mean) / stdev
+	}
+
+	return data
+}
+
 func Predict(sensors *types.Sensors) (*types.OptimizationData, error) {
 	model, err := tf.LoadSavedModel(modelDir, []string{modelTag}, nil)
 	if err != nil {
@@ -20,13 +53,7 @@ func Predict(sensors *types.Sensors) (*types.OptimizationData, error) {
 	}
 	defer model.Session.Close()
 
-	data := [5]float32{
-		0,
-		sensors.Temperature,
-		sensors.Pressure,
-		sensors.Humidity,
-		sensors.Gas,
-	}
+	data := Normalize(sensors)
 
 	tensor, err := tf.NewTensor([][5]float32{data})
 	if err != nil {

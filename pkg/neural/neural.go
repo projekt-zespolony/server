@@ -15,14 +15,7 @@ const (
 	outputLayer = "output/Sigmoid"
 )
 
-func Normalize(sensors *types.Sensors) [5]float32 {
-	data := [5]float32{
-		float32(sensors.Timestamp),
-		sensors.Temperature,
-		sensors.Pressure,
-		sensors.Humidity,
-		sensors.Gas,
-	}
+func Normalize(data []float32) []float32 {
 	dataLength := float32(len(data))
 
 	sum := float32(0)
@@ -46,16 +39,44 @@ func Normalize(sensors *types.Sensors) [5]float32 {
 	return data
 }
 
-func Predict(sensors *types.Sensors) (*types.OptimizationData, error) {
+func Predict(sensors []*types.Sensors) (*types.OptimizationData, error) {
 	model, err := tf.LoadSavedModel(modelDir, []string{modelTag}, nil)
 	if err != nil {
 		return nil, err
 	}
 	defer model.Session.Close()
 
-	data := Normalize(sensors)
+	timestamps := []float32{}
+	temperatures := []float32{}
+	pressures := []float32{}
+	humidities := []float32{}
+	gases := []float32{}
+	for i := range sensors {
+		timestamps = append(temperatures, float32(sensors[i].Timestamp))
+		temperatures = append(temperatures, sensors[i].Temperature)
+		pressures = append(pressures, sensors[i].Pressure)
+		humidities = append(humidities, sensors[i].Humidity)
+		gases = append(gases, sensors[i].Gas)
+	}
 
-	tensor, err := tf.NewTensor([][5]float32{data})
+	timestamps = Normalize(timestamps)
+	temperatures = Normalize(temperatures)
+	pressures = Normalize(pressures)
+	humidities = Normalize(humidities)
+	gases = Normalize(gases)
+
+	allData := [][5]float32{}
+	for i := range sensors {
+		allData = append(allData, [5]float32{
+			timestamps[i],
+			temperatures[i],
+			pressures[i],
+			humidities[i],
+			gases[i],
+		})
+	}
+
+	tensor, err := tf.NewTensor(allData)
 	if err != nil {
 		return nil, err
 	}
@@ -76,7 +97,7 @@ func Predict(sensors *types.Sensors) (*types.OptimizationData, error) {
 	output := result[0].Value().([][]float32)[0]
 
 	opt := &types.OptimizationData{
-		Timestamp:        sensors.Timestamp,
+		Timestamp:        sensors[len(sensors)-1].Timestamp,
 		WindowsAreOpened: output[0] > treshold,
 		PeopleInTheRoom:  output[1] > treshold,
 	}

@@ -11,6 +11,7 @@ require (
 	github.com/google/go-cmp v0.4.1 // indirect
 	github.com/jinzhu/gorm v1.9.12
 	github.com/labstack/echo/v4 v4.1.16
+	github.com/tensorflow/tensorflow v1.15.3
 	golang.org/x/crypto v0.0.0-20200510223506-06a226fb4e37 // indirect
 	golang.org/x/mod v0.3.0 // indirect
 	golang.org/x/net v0.0.0-20200520182314-0ba52f642ac2 // indirect

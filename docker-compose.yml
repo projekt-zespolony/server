@@ -20,6 +20,7 @@ services:
     container_name: server
     restart: on-failure
     environment:
+      TF_CPP_MIN_LOG_LEVEL: 3
       FIREBASE_DISABLED: "yes"
       SERVER_ACCESS_TOKEN: token
       SERVER_PORT: 8080
